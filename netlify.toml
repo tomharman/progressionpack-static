@@ -1,6 +1,3 @@
 # Change JEKYLL_ENV to 'teamsafe' to hide team folder
 [build]
   command = "make pp && JEKYLL_ENV=production jekyll build"
-
-[context.production]
-  publish = "_site/"
