@@ -16,8 +16,9 @@ Got your Airtable access, a Github account and looking to just get going quickly
 These can be found by doing the following:
 
 1. Open your personal Progression Pack Airtable base
-2. Click `help` then `API Documentation`
-3. Click `Show API Key` in the top right of the dark panel, then scroll to `Authentication` and find the 'Query Parameter' (it should look like `https://api.airtable.com/v0/app12345/Foo?api_key=key12345`)
+2. Open your `Account` Settings, and under `API` generate a new API key.
+2. Next, click `help` then `API Documentation`
+3. Scroll to `Authentication` and find the 'Query Parameter' (it should look like `https://api.airtable.com/v0/app12345/Foo?api_key=key12345`)
 4. Your App ID is the part from with `app` until before the `/` and the API key is the part beginning with `key` at the end.
 
 _Important: Keep these safe and private, but close to hand. Anyone with these can view and modify your data. You can also create a second Airtable user with read-only access and use their APP_KEY if you want to be extra safe._
@@ -31,19 +32,17 @@ Follow the instructions on Netlify to create a new repository in your Github acc
   <img src="https://www.netlify.com/img/deploy/button.svg" title="Deploy to Netlify">
 </a>
 
-**This deploy will fail. That's expected - you need to complete the next step for a successful deploy**
+1. You'll connect your Github account
+2. Netlify will ask you to name your repository, and enter the details you found in the previous step.
 
+When you've completed this step, your deploy should begin! The domain name will be random, but you can update to your own when you see fit.
 
-### 3. Finally, there are two things you'll need to do within Netlify's interface:
+If you head to your Github account you'll also see a new repository. You'll need this to run Progression Pack locally and make any styling changes.
 
-1. Add your personal API Key and App ID as environment variables
-2. (optional) Update the domain URL to something memorable (or add your own custom domain).
+If all you want to do is add your brand colour, you can do that from within Github. Just head to `/blob/master/_sass/_variables.scss` and edit the `$color-brand` variable to your brand colour. You can also make decisions about UI elements towards the bottom of that file.
 
-<img src="assets/docs/environment-variables.png" width="600" alt="environment variables"/>
+When you commit that file, Netlify will automatically push the changes to your live site.
 
-This should mean your next deploy pulls in your own Progression Pack data and sends it to your personal domain.
-
-_scroll to the bottom for instructions for hiding team members' skills from each other, and setting a cronjob to deploy automatically every few minutes._
 
 ---
 
