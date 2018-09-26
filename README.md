@@ -29,11 +29,13 @@ Follow the instructions on Netlify to create a new repository in your Github acc
 
 [![Deploy Progression Pack to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/jonnyburch/progressionpack-static)
 
+**This deploy will fail. That's expected - you need to complete the next step for a successful deploy**
+
 
 #### 3. Finally, there are two things you'll need to do within Netlify's interface:
 
-1. Update the domain URL to something memorable (or add your own custom domain).
-2. Add your personal API Key and App ID as environment variables
+1. Add your personal API Key and App ID as environment variables
+2. (optional) Update the domain URL to something memorable (or add your own custom domain).
 
 <img src="assets/docs/environment-variables.png" width="600" alt="environment variables"/>
 
