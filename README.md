@@ -27,7 +27,9 @@ _Important: Keep these safe and private, but close to hand. Anyone with these ca
 
 Follow the instructions on Netlify to create a new repository in your Github account and deploy your first version.
 
-[![Deploy Progression Pack to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/jonnyburch/progressionpack-static)
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/jonnyburch/progressionpack-static">
+  <img src="https://www.netlify.com/img/deploy/button.svg" title="Deploy to Netlify">
+</a>
 
 **This deploy will fail. That's expected - you need to complete the next step for a successful deploy**
 
