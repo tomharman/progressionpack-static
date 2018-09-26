@@ -1,6 +1,7 @@
 # Change JEKYLL_ENV to 'teamsafe' to hide team folder
 [build]
   command = "make pp && JEKYLL_ENV=production jekyll build"
+  publish = "_site/"
 
 [template.environment]
   APP_KEY = "Change me for your Airtable API Key"

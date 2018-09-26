@@ -11,7 +11,7 @@ To use these for your team's progression framework, follow the below instruction
 Got your Airtable access, a Github account and looking to just get going quickly? Try this simple three step setup using [Netlify](https://netlify.com).
 
 
-#### 1. First of all grab your Airtable App Key and API key. 
+### 1. First of all grab your Airtable App Key and API key. 
 
 These can be found by doing the following:
 
@@ -23,7 +23,7 @@ These can be found by doing the following:
 _Important: Keep these safe and private, but close to hand. Anyone with these can view and modify your data. You can also create a second Airtable user with read-only access and use their APP_KEY if you want to be extra safe._
 
 
-#### 2. Hit this link: [Deploy to Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/jonnyburch/progressionpack-static) 
+### 2. Hit this link: [Deploy to Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/jonnyburch/progressionpack-static) 
 
 Follow the instructions on Netlify to create a new repository in your Github account and deploy your first version.
 
@@ -34,7 +34,7 @@ Follow the instructions on Netlify to create a new repository in your Github acc
 **This deploy will fail. That's expected - you need to complete the next step for a successful deploy**
 
 
-#### 3. Finally, there are two things you'll need to do within Netlify's interface:
+### 3. Finally, there are two things you'll need to do within Netlify's interface:
 
 1. Add your personal API Key and App ID as environment variables
 2. (optional) Update the domain URL to something memorable (or add your own custom domain).
