@@ -102,3 +102,11 @@ _If running locally, remember to also change your jekyll serve command according
 5. Click `Create Cron Job` and you're done! You can test it by clicking the conical beaker icon. (You'll know it worked if the website starts building in Netlify)
 
 _If you want to deploy more often than every 20 minutes you'll need to pay all of $12 for a year of the next tier of Easycron. This cronjob can alternatively be run with Zapier or various other services_
+
+
+
+---
+
+### License
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
