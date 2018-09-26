@@ -37,6 +37,8 @@ Follow the instructions on Netlify to create a new repository in your Github acc
 
 When you've completed this step, your deploy should begin! The domain name will be random, but you can update to your own when you see fit.
 
+### 3. Edit your brand colour
+
 If you head to your Github account you'll also see a new repository. You'll need this to run Progression Pack locally and make any styling changes.
 
 If all you want to do is add your brand colour, you can do that from within Github. Just head to `/blob/master/_sass/_variables.scss` and edit the `$color-brand` variable to your brand colour. You can also make decisions about UI elements towards the bottom of that file.
