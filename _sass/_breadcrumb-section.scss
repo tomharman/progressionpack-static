@@ -1,0 +1,25 @@
+.breadcrumb-section {
+    padding: 1rem;
+    display: flex;
+    background-color: $breadcrumb-background;
+    .breadcrumb-section__content {
+        .breadcrumb__content__link {
+            color: $breadcrumb-text;
+            font-size: $text-size;
+            display: flex;
+            align-items: center;
+            svg {
+                padding-right: 0.3rem;
+                path, polygon, rect, circle {
+                    fill: $breadcrumb-text;
+                }
+            }
+        }
+    }
+    @include md {
+        display: none;
+    }
+    @include print {
+        display: none;
+    }
+}

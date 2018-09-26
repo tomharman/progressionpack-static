@@ -1,0 +1,504 @@
+commit b50f0847db85efb8c7ab14a2fcc6397307fd22df
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Wed Sep 26 13:51:52 2018 +0100
+
+    Woops
+
+commit 29e83ea3f1e40ce4105264055494504a2ec34cf1
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Wed Sep 26 13:49:04 2018 +0100
+
+    docs docs
+
+commit 4d740606ea2cc21cf358de690ca832f133f5c022
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Wed Sep 26 13:42:46 2018 +0100
+
+    Added an image
+
+commit d625a065bfa48a969efa64c056307b8123773f2c
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Wed Sep 26 13:39:31 2018 +0100
+
+    Restructured docs
+
+commit 1c8d95da59a18a16208ddf854d7a65bfd205d26a
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Wed Sep 26 12:31:25 2018 +0100
+
+    Better docs
+
+commit 2de3e823569632729c994cd3555daef49346adb4
+Author: Jesper Thomschutz <jesper@tandem.engineering>
+Date:   Wed Sep 26 07:09:12 2018 -0400
+
+    Pull airtable secrets from env: API_KEY, APP_KEY
+
+commit 523997b9acce62e6e740dc6511f13c17e2f89b1a
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Wed Sep 26 11:05:52 2018 +0100
+
+    commenting code
+
+commit 76440022cf2a0a9461b2ea81eb0aac3f77ae91dc
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Wed Sep 26 11:04:51 2018 +0100
+
+    fixed toml to deploy correctly
+
+commit 050181f316831ab3aa329a5f99561166f697203b
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Wed Sep 26 10:30:44 2018 +0100
+
+    No need for jq now
+
+commit f350db4fe6cc88dffabbe6190f5d88bbf65ac8e3
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Wed Sep 26 10:29:58 2018 +0100
+
+    Update README.md
+
+commit 1fb10366ec748ae78b116c0c5052b02df8e6a393
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Wed Sep 26 10:27:01 2018 +0100
+
+    Explaining hiding links
+
+commit 0ac255b0de98fdc3e44f7c72b2a51ac91a47dd84
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Wed Sep 26 10:23:48 2018 +0100
+
+    image width
+
+commit c516f8f41e313d40cb63068680eec80f5b29ef4d
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Wed Sep 26 10:19:50 2018 +0100
+
+    update gitignore
+
+commit d5247fbf46e7610d7ca8db935e8bb7326ee5a242
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Wed Sep 26 10:19:10 2018 +0100
+
+    Added image
+
+commit b97788afe3c6549f3f6ac778b2d3bdd84d8aef92
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Wed Sep 26 10:10:55 2018 +0100
+
+    Read-only API key
+
+commit d72b7f10539d28e99a3730f2913db58764b58a52
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Wed Sep 26 10:02:45 2018 +0100
+
+    Quick deploy link
+
+commit 05e38afaf92f1911d3571905d257e4c400202954
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Wed Sep 26 09:58:25 2018 +0100
+
+    Better docs
+
+commit 7f2bbf639e663a61c3eb427280d63bd7266380d7
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Wed Sep 26 09:54:40 2018 +0100
+
+    Added teamsafe environment and version number
+
+commit 92a0cdfe24e82a84cc2668539c104a47f45379b9
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 24 18:18:21 2018 +0100
+
+    print stylesheets TIL
+
+commit e2af0a34464dc6e5057a31bee2fb12171b22dc61
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 24 15:10:07 2018 +0100
+
+    move levels down
+
+commit 13d79104b9a4814433bb1542bb6e47947bd45152
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 24 10:55:48 2018 +0100
+
+    404 improvement
+
+commit cf18a022c8cd91ca268920a97b62a752c8140f23
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 24 10:05:49 2018 +0100
+
+    fixed menus
+
+commit b05a9ad26d93c36013ed28fc0c2e6b04a9f224eb
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Sun Sep 23 21:57:15 2018 +0100
+
+    padding issue
+
+commit f7bdd9330438b8945bb486f10050b8a9c5654ff4
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Sun Sep 23 12:06:19 2018 +0100
+
+    improved menu sections
+
+commit 14da52dc7519b643dd0334a50acbfe0242ec67e3
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Sun Sep 23 11:39:10 2018 +0100
+
+    A bunch more styling
+
+commit 028070bbd9e51ec0fb85999b777dd409301f3f38
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Sun Sep 23 08:51:01 2018 +0100
+
+    cleaned up layout on level a bit
+
+commit 9a27e7e7f0e943d8b14551a3df2d8532c03a2065
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Sun Sep 23 00:40:06 2018 +0100
+
+    active links
+
+commit e5061b0268dbd593e91f8f8784d20ef6a372354e
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Sat Sep 22 11:24:37 2018 +0100
+
+    New levels page
+
+commit 2493e37971ba6d3cd40d54b113b52fe0c6368254
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Sat Sep 22 10:21:39 2018 +0100
+
+    fixed some errors, added footer link
+
+commit b562637a1cbdc13fe8ab11e42c9372c4b0ecf7c7
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Sat Sep 22 10:09:22 2018 +0100
+
+    Added a header to all top pages
+
+commit 7e9b87d858204006bc8050ebb85178d22e346be3
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Sat Sep 22 00:54:34 2018 +0100
+
+    fixed a small padding issue
+
+commit 6588f785b31de9149dd2decf06b770cb854386b7
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Sat Sep 22 00:52:24 2018 +0100
+
+    Fixed skills pages
+
+commit e0bcd39c9c3b9e55341549122125167a2d01d075
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Fri Sep 21 22:53:11 2018 +0100
+
+    pre-change commit
+
+commit 2e907fc424ad4220540764a946caabac1e65dd77
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Fri Sep 21 21:51:21 2018 +0100
+
+    smh
+
+commit 502df448864ec24682992949fe1f3dbffd09bbab
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Fri Sep 21 21:38:06 2018 +0100
+
+    netlify.toml
+
+commit 62017cf6e3e88595fd2e34ff28c2ee7897c18c7b
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Fri Sep 21 21:26:48 2018 +0100
+
+    test with no environment variables
+
+commit 9acb2de5a78d07bb74383609a30a1af583761d9b
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Fri Sep 21 18:11:55 2018 +0100
+
+    Hack hack hack
+
+commit 7e6e229833bc6f553a7d205848512e69229bef4b
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Fri Sep 21 17:14:10 2018 +0100
+
+    New sidebar, a bunch of styling
+
+commit f12d4b4e051c0c9b6a37199f00cfd998a6b14302
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Fri Sep 21 11:52:37 2018 +0100
+
+    Added favicon
+
+commit 90e4f397fb1748d9896f928fe7583f2e79ec327d
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Fri Sep 21 11:46:06 2018 +0100
+
+    Cleaned up page and site titles
+
+commit 0786a380d69a65df57b93d532d54bcfc28666a22
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Wed Sep 19 08:34:54 2018 +0100
+
+    improving the adventure
+
+commit ed7e66f7758e9267b8c813ac3b00592925d0c3cb
+Merge: a39e76d 18e883a
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Tue Sep 18 14:41:59 2018 +0100
+
+    Merge branch 'master' of https://github.com/jonnyburch/progression-jekyll
+
+commit a39e76deff83c3b1bbd6ba1693766f2c5c7fb07b
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Tue Sep 18 14:41:39 2018 +0100
+
+    allow emojis
+
+commit 18e883a6038bbcbf6c5eb9fc731d6928a9e7b658
+Author: Jesper Thomschutz <jesper@tandem.engineering>
+Date:   Tue Sep 18 15:26:02 2018 +0200
+
+    Specify Python version for Netlify
+    
+    As per https://www.netlify.com/docs/continuous-deployment/
+
+commit abb192b20ad13c1a1277cd84a96bff2e3dd906e0
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Tue Sep 18 14:17:25 2018 +0100
+
+    use python script
+
+commit 00f09496b969baccb7cde67105fe19ad9ca36f69
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Tue Sep 18 13:34:49 2018 +0100
+
+    readme update to reflect command
+
+commit 18da08b63b8f6ec6c7b3cc0a3ec0f8cc0b7d60f8
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Tue Sep 18 13:33:30 2018 +0100
+
+    added to gitignore, more verbose makefile
+
+commit 7be9ecd48646372fe407a110c0ecf256d2b42760
+Author: Jesper Thomschutz <jesper@tandem.engineering>
+Date:   Tue Sep 18 13:50:58 2018 +0200
+
+    WIP of Python version of pull-data
+    
+    Tried to preserve behavior of the original bash version.
+    
+    Run: pip install -r requirements.txt
+    in advance to install the airtable library for python.
+
+commit e6c85cb7b0ab38c8b72463841311155d54bf8454
+Author: Jesper Thomschutz <jesper@tandem.engineering>
+Date:   Tue Sep 18 11:34:57 2018 +0200
+
+    Get data from Airtable sequentially to avoid races
+    
+    Fixes #2
+    
+    Alternative fix which maintains performance would be to keep existing
+    method and then iterate overbackground jobs until they are all done:
+    
+    https://stackoverflow.com/questions/356100/how-to-wait-in-bash-for-several-subprocesses-to-finish-and-return-exit-code-0
+
+commit 07ccc8fc75dee636364af11d18f4fec5d6f83835
+Author: Jesper Thomschutz <jesper@tandem.engineering>
+Date:   Tue Sep 18 11:26:13 2018 +0200
+
+    Display more information if team json fails to load
+
+commit b618f08190f9396c77d3d9560cd0519040e6fe19
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Tue Sep 18 08:07:27 2018 +0100
+
+    Added deploy to netlify button and
+
+commit 532488d74626ac9fd82a44698180cc71637c8e31
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Tue Sep 18 07:46:19 2018 +0100
+
+    removed sensitive files
+
+commit 735c9833c63e435eb37eeb8000b2ff1581ed0a0c
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Tue Sep 18 07:44:57 2018 +0100
+
+    trying again with gitignore
+
+commit 5476f1a62fe753e46832f5353b9a7ff4303ab4c7
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Tue Sep 18 01:23:32 2018 +0100
+
+    deploy test
+
+commit a44c2286faa9936e70d7db14ef32af0b822ef186
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Tue Sep 18 01:21:16 2018 +0100
+
+    update
+
+commit b7e21720ec314f92931cc11dd7d0747e2f8b90ce
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 17 23:53:24 2018 +0100
+
+    added forms
+
+commit f07057ef3e682c46d153f55daf4acbacb2c1f65b
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 17 18:15:26 2018 +0100
+
+    moved last updated to footer
+
+commit 4b88c5263a1c7508b8eb94ca6480c74299edca4c
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 17 18:04:04 2018 +0100
+
+    Added jq to append updated-date, showed on homepage
+
+commit 091ae7746193a416c362c6e251a9999560c65cb9
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 17 16:54:03 2018 +0100
+
+    small homepage fix
+
+commit 8e6f88a11a94cb25b317c7821250c67576fb03b1
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 17 16:52:23 2018 +0100
+
+    better css structure
+
+commit 4679362f62816b5844c44dbf2ed33739be123cdc
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 17 16:37:48 2018 +0100
+
+    improved font rendering and logo
+
+commit 736f23bfc98b2dd7282fd55bf75a657f37f47c36
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 17 16:20:37 2018 +0100
+
+    header link and homepage links
+
+commit a332941bc2ba21f92cb9663fe88211284ff154d5
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 17 16:12:34 2018 +0100
+
+    strange things going on with gitignore
+
+commit 030efd3829e26f2fda27f1e4c6765b3d1a78fab8
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 17 16:04:10 2018 +0100
+
+    new levels
+
+commit 4080e8785573336d6cc12426f7ddd3d453816f26
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 17 15:45:25 2018 +0100
+
+    fixed readme
+
+commit 55371e1cd72147c52b94d9ae8d3d651d47883c44
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 17 15:38:27 2018 +0100
+
+    updated gitignore and added levels
+
+commit 528a5e39b842b2f948ca10a7f4732d9193d21d1b
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 17 14:45:15 2018 +0100
+
+    Added level pages in
+
+commit 2755b8b8ead088933f7bea379d0356dcc2886e19
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Mon Sep 17 13:09:45 2018 +0100
+
+    improved data naming
+
+commit 055a251e6cf9c3b39af734535baafdd02f3146fc
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Sun Sep 16 12:54:06 2018 +0100
+
+    cleaner person page
+
+commit 4ec3c60b68230f16e9f4590c85c8fee9791a7fb2
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Sat Sep 15 15:13:39 2018 +0100
+
+    Added templating to other pages
+
+commit a549b72ed29179665e8a8f5f09cf2fb3621b4d74
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Sat Sep 15 11:18:03 2018 +0100
+
+    skills scroll section basics
+
+commit 9eea2e497bdbc2c06838b0bdb26a291d5d8f3df7
+Author: Jonny <jonnyburch@gmail.com>
+Date:   Sat Sep 15 10:38:08 2018 +0100
+
+    starting to style
+
+commit cbffa6799adb34a102ac059b10b1dd690b8d3f61
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Sat Sep 15 09:29:28 2018 +0100
+
+    skills
+
+commit 051cf71bbeb3e6eb5f22e81034d43f4ea1410cf3
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Sat Sep 15 01:46:14 2018 +0100
+
+    achieved basically nothing
+
+commit 45ee377c690e8d38033fcd70e161436e14bdd1fd
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Fri Sep 14 18:30:02 2018 +0100
+
+    A couple more bits of people pages
+
+commit 1f76ecba1b812e26bb556df45873c7d49beaf54f
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Fri Sep 14 17:23:04 2018 +0100
+
+    Added team page and some person data
+
+commit 11e3c93918742994646077fa52608479ee776c93
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Thu Sep 13 17:53:26 2018 +0100
+
+    Level and skill templating done
+
+commit bd886b84783aa10d4405a88c9457eb007ad48e10
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Sun Sep 9 23:04:20 2018 +0100
+
+    First pass on a readme
+
+commit b7680e9a149547948a639595759c6e30c72ae80f
+Author: Jonny Burch <jonnyburch@gmail.com>
+Date:   Sun Sep 9 22:37:20 2018 +0100
+
+    Some basic templating
+
+commit 7fea44b430c7d2e4624698768222352ad502db0d
+Author: Mathias Vagni <mathiasvagni@googlemail.com>
+Date:   Sun Sep 9 16:15:11 2018 +0100
+
+    Added first pass at Airtable integration.
+    
+    This includes a makefile and bash script to get the data.
+
+commit 79f2579c2078a296524239222a6bee050947f2fb
+Author: Mathias Vagni <mathiasvagni@googlemail.com>
+Date:   Sun Sep 9 15:19:25 2018 +0100
+
+    Initial commit
+    
+    Barebones jekyll structure.

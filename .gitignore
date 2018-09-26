@@ -1,0 +1,12 @@
+#basic jekyll gitignore
+_site
+.sass-cache
+.jekyll-metadata
+.vscode
+.DS_Store
+# Don't commit sensitive stuff!
+_data/
+_team/
+_levels/
+# Exceptions for readme files
+!*/readme.md

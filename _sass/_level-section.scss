@@ -1,0 +1,104 @@
+.level-section {
+  @include padded-card-section;
+  .level-section__header { 
+    display: flex;
+    flex-direction: column;
+    .level-section__header__title {
+      display: flex;
+      @include md {
+        margin: 0 0 1rem;
+      }
+      .panel__item {
+        padding-left: 1rem;
+      }
+    }
+    .level-section__header__description {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      font-size: 1.2rem;
+      border-bottom: 1px solid $color-grey-light;
+      @include md {
+        font-size: 1.3125rem; //21px
+      }
+    }
+    .level-section__header__meta {
+      display: grid;
+      @include md {
+        grid-template-columns: 1fr 1fr;
+      }
+      .level-section__header__points {
+        padding-bottom: 1rem;
+        @include md {padding-bottom: 0;}
+      }
+    }
+  }
+  .level-section__group {
+    margin: 1rem 0;
+    display: grid;
+    grid-template-rows: auto auto;
+    border-bottom: 1px solid $color-grey-light;
+    .level-section__group--header {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 1rem;
+      .level-section__group__description {
+        line-height: 1.4;
+        flex: 1;
+        align-content: center;
+        font-size: $text-size;
+        @include md {
+          font-size: $text-size-large;
+          max-width: $screen-sm-min;
+        }
+        @include lg {
+          font-size: $text-size-xlarge;
+        }
+      }
+      .level-section__group__meta {
+        display: flex;
+        align-items: center;
+        > * {
+          font-size: $text-size;
+          @include md {
+            font-size: $text-size-large;
+          }
+        }
+        .level-group__reveal-button {
+          color: $color-text-light;
+          margin-left: 1rem;
+        }
+      }
+    }
+    .level-group__reveal {
+      display: grid;
+      grid-gap: 0.5rem;
+      grid-template-columns: repeat(1, 1fr);
+      @include md {
+        grid-template-columns: repeat(2, 1fr);
+        font-size: $text-size-large;
+      }
+      overflow: hidden;
+      height: 0;
+      -webkit-transition: height 2s spring; /* Safari */
+      transition: height 2s spring;
+      &.show {
+        height: auto;
+        margin-bottom: 1rem;
+        li {
+          padding: 1rem;
+          background-color: $color-grey-light;
+          border-radius: $border-radius;
+          &.behaviour-Human {
+            background-color: $color-human-light;
+          }
+          &.behaviour-Maker {
+            background-color: $color-maker-light;
+          }
+          &.behaviour-Leader {
+            background-color: $color-leader-light;
+          }
+        }
+      }
+    }
+  }
+}

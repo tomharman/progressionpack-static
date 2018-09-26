@@ -1,0 +1,54 @@
+// Colours
+
+// This is the only colour you need to change!
+$color-brand:         #39B877; //Progression Pack Green
+
+
+
+$color-brand-light:     lighten( $color-brand, 10% );
+$color-brand-dark:      darken( $color-brand, 10% );
+
+$color-text:          #333333;
+$color-text-light:      lighten( $color-text, 50% );
+$color-grey-light:    #f4f7f8;
+
+$color-human:         #FFB7AF;
+$color-human-light:     lighten( $color-human, 10% );
+$color-human-dark:      darken( $color-human, 60% );
+
+$color-maker:         #7DCDE7;
+$color-maker-light:     lighten( $color-maker, 25% );
+$color-maker-dark:      darken( $color-maker, 32% );
+
+$color-leader:        #F2C94C;
+$color-leader-light:    lighten( $color-leader, 25% );
+$color-leader-dark:     darken( $color-leader, 32% );
+
+
+// Fonts
+
+$global-font: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$serif-font: 'PT Serif', serif;
+
+$text-size: 0.875rem;
+$text-size-large: 1rem;
+$text-size-xlarge: 1.3rem;
+
+$text-size-small: 1.125rem;
+
+
+// Misc styling
+
+$border-radius: 0.5rem;
+$deep-shadow: 0 12px 14px 0 rgba(14,30,37,.08);
+
+
+// Site settings
+$background-color:  $color-grey-light;
+$footer-color:      white;
+$nav-color:         $color-text;
+$title-bg-color:    $color-brand-dark;
+$link-color:        $color-brand-dark;
+
+$breadcrumb-background: $color-brand-dark;
+$breadcrumb-text:       #ffffff;

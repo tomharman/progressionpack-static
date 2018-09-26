@@ -1,0 +1,28 @@
+.team-section {
+    @include padded-section;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include lg {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .team-member {
+        display: grid;
+        grid-template-rows: auto auto;
+        border-radius: $border-radius;
+        background-color: white;
+        overflow: hidden;
+        box-shadow: $deep-shadow;
+        .team-member__avatar {
+            padding-bottom: 56.25%;
+            background-size: cover;
+            background-position: center;
+        }
+        .team-member__information {
+            padding: 1rem;
+        }
+    }
+}

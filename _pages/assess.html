@@ -1,0 +1,11 @@
+---
+layout: base
+permalink: "/assess/"
+title: Assess
+---
+
+{% assign assess_link = site.data.information.records[0].fields.assessment-form %}
+
+<div class="form-embed">
+    <iframe class="airtable-embed" scrolling="yes" src="https://airtable.com/embed/{{assess_link}}?backgroundColor=green" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent;"></iframe>
+</div>

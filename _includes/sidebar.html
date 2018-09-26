@@ -1,0 +1,54 @@
+{% assign team = site.data.team.records %}
+{% assign levels = site.data.levels.records %}
+{% assign instructions_updated = site.data.instructions.updated %}
+{% assign information_updated = site.data.information.updated %}
+{% assign skills_updated = site.data.skills.updated %}
+{% assign levels_updated = site.data.levels.updated %}
+{% assign team_updated = site.data.team.updated %}
+{% assign assessments_updated = site.data.assessments.updated %}
+{% assign goals_updated = site.data.goals.updated %}
+
+
+<div class="sidebar">
+    {% if jekyll.environment == "production" %}
+    <div class="sidebar-section">
+        <h3 class="sidebar-section-title"><a href="/team">Team{% include icon/forwards.html class="brand" %}</a></h3>
+        <ul class="sidebar-section__list">
+            {% for team_member in team %}
+            <li class="sidebar-section__link {% if page.url contains team_member.id %}active{% endif %}"><a class="" href="../team/{{team_member.id}}">{{team_member.fields.name}}{% include icon/forwards.html class="brand" %}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    <div class="sidebar-section">
+        <h3 class="sidebar-section-title"><a href="/levels">Seniority Levels{% include icon/forwards.html class="brand" %}</a></h3>
+        <ul class="sidebar-section__list">
+            {% assign grouped_levels = levels | group_by: "fields.type" %}
+                {% for level_type in grouped_levels %}
+                <li>
+                    <p class="sidebar-section__subheading">{{level_type.name}}</p>
+                    <ul>
+                        {% assign levels_reversed = level_type.items | sort: "fields.points" %}
+                        {% for level in levels_reversed %}
+                        <li class="sidebar-section__link {% if page.url contains level.id %}active{% endif %}"><a class="" href="../levels/{{level.id}}">{{level.fields.name}}{% include icon/forwards.html class="brand" %}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+        </ul>
+    </div>
+    <div class="sidebar-section">
+        <h3 class="sidebar-section-title"><a href="/skills">Skills{% include icon/forwards.html class="brand" %}</a></h3>
+        <ul class="sidebar-section__list">
+            {% assign site_skills = site.skills | sort: "order" %}
+            {% for skill_pillar in site_skills %}
+            <li class="sidebar-section__link {% if page.url == skill_pillar.url %}active{% endif %}"><a class="" href="{{skill_pillar.url}}">{{skill_pillar.pillar_name}}{% include icon/forwards.html class="brand" %}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="sidebar__button-holder">    
+        <a href="{{site.url}}/assess" class="btn--brand">Start an assessment</a>
+        <a href="{{site.url}}/goal" class="btn--brand">Create a goal</a>
+    </div>
+        <p class="last-updated">Last updated: <br>{{instructions_updated | date: " %d %b %Y at %H:%M"}}</p>
+</div>

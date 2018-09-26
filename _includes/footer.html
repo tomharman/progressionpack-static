@@ -1,0 +1,12 @@
+{% assign company_name = site.data.information.records[0].fields.company-name %}
+{% assign logo_url = site.data.information.records[0].fields.logo[0].thumbnails.large.url %}
+
+    <footer>
+      <div class="footer__content">
+        <p class="grey">© {{company_name}} {{information_updated | date: "%Y"}}. Built with <a href="https://progressionpack.com">Progression Pack v{{site.version}}</a></p>
+      </div>
+    </footer>
+    <script src="{{site.url}}/assets/scripts.js"></script>
+  </body>
+
+</html>

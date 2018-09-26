@@ -1,0 +1,45 @@
+---
+layout: base
+permalink: "/levels/"
+title: Levels
+description: The seniority levels available to designers 
+order: 2
+icon: dial
+---
+
+{% assign instructions = site.data.instructions.records %}
+{% assign information = site.data.information.records %}
+{% assign skills = site.data.skills.records %}
+{% assign levels = site.data.levels.records %}
+{% assign team = site.data.team.records %}
+
+{% assign levels_type = site.data.levels.records | group_by: "fields.type" %}
+
+<div class="title-section">
+    <div class="title-section__content">
+        {% include icon/dial.html class="white large" %}
+        <h1 class="title-section__title">{{page.title}}</h1>
+        <p class="title-section__text">{{page.description}}</p>
+    </div>
+</div>
+
+{% for level_type in levels_type %}
+<h3 class="levels-title">{{level_type.name}}</h3>
+<div class="levels-section">
+    {% assign level_items = level_type.items | reverse %}
+    {% for level_item in level_items %}
+    <a class="" href="../levels/{{level_item.id}}">
+    <div class="levels-section__level">
+      <div class="level__avatar">
+          <h3>{{level_item.fields.name}}</h3>
+      </div>
+      <div class="level__information">
+        <p>{{level_item.fields.role}}</p>
+        <p class="grey">{{level_item.fields.points}} points</p>
+        <p></p>
+      </div>
+    </div>
+    </a>
+    {% endfor %}
+  </div>
+{% endfor %}

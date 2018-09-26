@@ -1,0 +1,47 @@
+{% assign company_name = site.data.information.records[0].fields.company-name %}
+{% assign logo_url = site.data.information.records[0].fields.logo[0].thumbnails.large.url %}
+
+<header>
+  <div class="header__brand">
+    <a class="brand__logo" href="/">
+      <img src="{{logo_url}}" alt="" />
+      <h4 class="brand__text">{{ company_name }} <span>progression framework</span></h4>
+    </a>
+  </div>
+  <div class="header__nav">
+    <ul class="nav__list">
+      {% assign nav_pages = site.pages | sort: "order" %}
+      {% for nav_page in nav_pages %}
+
+        {% if nav_page.order != null %}
+        {% if nav_page.url == page.url %}
+        <li class="nav__list__item active">
+          <a href="{{nav_page.url}}">
+            <img class="svg-icon header" src="{{site.url}}/assets/{{nav_page.icon}}.svg" alt="">
+            {{nav_page.title}}
+          </a>
+        </li>
+        {% else %}
+        <li class="nav__list__item">
+          <a href="{{nav_page.url}}">
+            <img class="svg-icon header" src="{{site.url}}/assets/{{nav_page.icon}}.svg" alt="">
+            {{nav_page.title}}
+          </a>
+        </li>
+        {% endif %}
+        {% endif %}
+
+      {% endfor %}
+    </ul>
+  </div>
+</header>
+
+
+<!-- {% for node in site.pages %}
+{% if page.url == node.url %}
+  <li class="active"><a href="{{node.url}}" class="active">{{node.title}}</a></li>
+{% else %}
+  <li class="nav__list__item"><a href="/skills">{% include icon/map.html class="brand" %} Skills</a></li>
+  <li><a href="{{node.url}}">{{node.title}}</a></li>
+{% endif %}
+{% endfor %} -->

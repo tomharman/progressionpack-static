@@ -1,0 +1,62 @@
+.team-member-profile-section {
+    @include padded-card-section; 
+}
+
+.team-member-sections {
+    @include simple-section;
+    @include md {
+        padding: 0;
+    }
+    @include lg {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 0;
+    }
+}
+.team-member-section {
+    @include padded-card-section;
+    border-top: 0;
+    @include md {
+        margin: 0 0 1rem 0;
+        padding: 1rem;
+    }
+    &.team-member-section__panel--Human {
+        background-color: $color-human-light;
+        .panel__title {
+        color: $color-human-dark;
+        }
+    }
+    &.team-member-section__panel--Leader {
+        background-color: $color-leader-light;
+        .panel__title {
+        color: $color-leader-dark;
+        }
+    }
+    &.team-member-section__panel--Maker {
+        background-color: $color-maker-light;
+        .panel__title {
+        color: $color-maker-dark;
+        }
+    }
+    .panel__title {
+        margin-bottom: 1rem;
+    }
+    .panel__item {
+        background-color: white;
+        padding: 1rem;
+        border-radius: 6px;
+        margin-bottom: 0.5rem;
+        &:last-child {
+        margin-bottom: 0;
+        }
+    }
+    }
+    .team-member-section__link-holder {
+    margin: 1rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $color-grey-light;
+    .team-member-section__link {
+        color: $color-brand;
+    }
+}

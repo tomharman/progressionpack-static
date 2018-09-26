@@ -1,0 +1,54 @@
+.svg-icon {
+    width: 1em;
+    height: 1em;
+    path,
+    polygon,
+    rect, svg path {
+        fill: $color-text-light;
+        }
+    circle {
+        fill: $color-text;
+        stroke-width: 1;
+    }
+    &.Human {
+        path, polygon, rect, circle {
+            fill: $color-human;
+        }
+    }
+    &.Maker {
+        path, polygon, rect, circle {
+            fill: $color-maker;
+        }
+    }
+    &.Leader {
+        path, polygon, rect, circle {
+            fill: $color-leader;
+        }
+    }
+    &.brand {
+        path, polygon, rect, circle {
+            fill: $color-brand;
+        }
+    }
+    &.brand-light {
+        path, polygon, rect, circle {
+            fill: lighten( $color-brand, 40% );
+        }
+    }
+    &.white {
+        path, polygon, rect, circle {
+            fill: white;
+        }
+    }
+    &.large {
+        width: 3rem;
+        height: 3rem;
+    }
+    &.header {
+        width: 0.85rem;
+        height: 0.85rem;
+        margin-right: 0.4rem;
+        margin-top: 0.1rem;
+    }
+}
+  

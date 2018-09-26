@@ -1,0 +1,58 @@
+//No media query means devices lower than 36rem/576px (smartphones)
+// To understand rem as pixels, multiply by 16
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 36rem; //576px
+
+// Small tablets (portrait view)
+$screen-md-min: 48rem; //768px
+
+// Tablets and small desktops
+$screen-lg-min: 62rem; //992px
+
+// Large tablets and desktops
+$screen-xl-min: 75rem; //1200px
+
+
+// Small devices
+@mixin sm {
+    @media (min-width: #{$screen-sm-min}) {
+        @content;
+    }
+ }
+ 
+ // Medium devices
+ @mixin md {
+    @media (min-width: #{$screen-md-min}) {
+        @content;
+    }
+ }
+ 
+ // Large devices
+ @mixin lg {
+    @media (min-width: #{$screen-lg-min}) {
+        @content;
+    }
+ }
+ 
+ // Extra large devices
+ @mixin xl {
+    @media (min-width: #{$screen-xl-min}) {
+        @content;
+    }
+ }
+
+// All print styles
+ @mixin print {
+    @media print { 
+        @page {
+            margin: 10px;
+            size: A4 landscape;
+        }
+        @content; 
+    }
+ }
+
+ .print-break {
+     page-break-after: always;
+ }

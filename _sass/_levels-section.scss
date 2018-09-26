@@ -1,0 +1,36 @@
+.levels-title {
+    @include padded-section;
+    padding-bottom: 0;
+}
+.levels-section {
+    @include padded-section;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include lg {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .levels-section__level {
+        display: grid;
+        grid-template-rows: auto auto;
+        border-radius: $border-radius;
+        background-color: white;
+        overflow: hidden;
+        box-shadow: $deep-shadow;
+        .level__avatar {
+            min-height: 100px;
+            background-color: $color-brand-light;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            * {color: white;}
+        }
+        .level__information {
+            padding: 1rem;
+        }
+    }
+}

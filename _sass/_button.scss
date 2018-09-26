@@ -1,0 +1,59 @@
+@mixin button-reset {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    margin: 2px 0;
+}
+  
+  
+.btn--brand {
+    @include button-reset;
+    background-color: $color-brand;
+    color: white;
+    border-radius: 500px;
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+    font-size: $text-size-small;
+    &:active, &:hover, &:focus {
+        background-color: $color-brand-dark;
+    }
+    @include md {
+        font-size: $text-size;
+    }
+}
+  
+.btn-text {
+    @include button-reset;
+    color: $color-brand;
+    font-size: $text-size;
+    border-radius: 500px;
+    padding: 0;
+    text-decoration: none;
+    &:active, &:hover, &:focus {
+      color: $color-brand-dark;
+    }
+    @include md {
+      font-size: $text-size;
+    }
+}
+  
+.btn-text--light {
+    @include button-reset;
+    color: $color-text-light;
+    font-size: $text-size;
+    border-radius: 500px;
+    padding: 0;
+    text-decoration: none;
+    &:active, &:hover, &:focus {
+      color: $color-brand-dark;
+    }
+    @include md {
+        font-size: $text-size;
+    }
+}

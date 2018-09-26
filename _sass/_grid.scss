@@ -1,0 +1,46 @@
+.container {
+    flex: 1;
+    display: grid;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "content"
+      "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: 
+        auto
+        minmax(0, auto)
+        1fr
+        auto;
+    height: 100vh;
+    @include md {
+        grid-template-areas:
+        "header header"
+        "sidebar content"
+        "footer footer";
+        grid-template-columns: minmax(14rem, auto) 1fr;
+        grid-template-rows: auto 1fr auto;
+    }
+    @include print {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        width: 100%;
+    }
+}
+
+header {
+    grid-area: header;
+}
+.sidebar {
+    grid-area: sidebar;
+}
+.content {
+    grid-area: content;
+    padding-bottom: 2rem;
+    @include print {
+        grid-area: unset;
+    }
+}
+footer {
+    grid-area: footer;
+}

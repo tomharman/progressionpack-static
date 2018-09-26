@@ -1,0 +1,44 @@
+---
+layout: base
+permalink: "/skills/"
+title: Skills
+description: Skills are divided into three parts.
+order: 1
+icon: map
+---
+
+{% assign instructions = site.data.instructions.records %}
+{% assign information = site.data.information.records %}
+{% assign skills = site.data.skills.records %}
+{% assign levels = site.data.levels.records %}
+{% assign team = site.data.team.records %}
+
+<div class="title-section">
+    <div class="title-section__content">
+        {% include icon/map.html class="white large" %}
+        <h1 class="title-section__title">{{page.title}}</h1>
+        <p class="title-section__text">{{page.description}}</p>
+    </div>
+</div>
+
+<div class="card-menu-section">
+    {% for skill in site.skills %}
+    <div class="card-menu-section__card">
+        <a href="{{site.url}}{{skill.url}}">
+            <div class="card__avatar card__avatar--{{skill.pillar_name}}">
+                <h3>{{skill.title}}</h3>
+            </div>
+            <div class="card__information">
+                <div class="card__information__content">
+                    <p>{{skill.description}}</p>
+                </div>
+                <div class="card__arrow">
+                    {% include icon/forwards.html %}
+                </div>
+            </div>
+            
+        </a>
+        </div>
+        {% endfor %}
+
+</div>

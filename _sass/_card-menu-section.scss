@@ -1,0 +1,46 @@
+.card-menu-section {
+    @include padded-section;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+    @include md {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @include lg {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .card-menu-section__card {
+        border-radius: $border-radius;
+        background-color: white;
+        box-shadow: $deep-shadow;
+        overflow: hidden;
+        a {
+            display: grid;
+            grid-template-rows: auto auto;
+            .card__avatar {
+                min-height: 100px;
+                background-color: $color-brand-light;
+                display: flex;
+                align-items: center;
+                text-align:center;
+                justify-content: center;
+                padding: 1rem;
+                * {color: white;}
+                .svg-icon {
+                    height: 1rem;
+                    width: 1rem;
+                }
+                &.card__avatar--Human {background-color: $color-human;}
+                &.card__avatar--Maker {background-color: $color-maker;}
+                &.card__avatar--Leader {background-color: $color-leader;}
+            }
+            .card__information {
+                padding: 1rem;
+                display: grid;
+                grid-template-columns: 1fr 1rem;
+                grid-column-gap: 0.5rem;
+                align-items: center;
+            }
+        }
+    }
+}

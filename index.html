@@ -1,0 +1,63 @@
+---
+layout: base
+title: Home
+---
+
+{% assign company_name = site.data.information.records[0].fields.company-name %}
+{% assign company_description = site.data.information.records[0].fields.description %}
+{% assign logo_url = site.data.information.records[0].fields.logo[0].thumbnails.large.url %}
+
+<div class="title-section">
+    <div class="title-section__content">
+        <img class="title-section__logo" src="{{logo_url}}" alt="{{company_name}} Logo">
+        <h1 class="title-section__title">Welcome to {{company_name}}'s Progression Framework</h1>
+        <p class="title-section__text">{{company_description}}</p>
+    </div>
+</div>
+<div class="card-menu-section">
+    <div class="card-menu-section__card">
+        <a href="/skills">
+            <div class="card__avatar">
+                <h3>{% include icon/map.html class="white" %} Skills</h3>
+            </div>
+            <div class="card__information">
+                <div class="card__information__content">
+                    <p>View the skills in which Designers at {{company_name}} need to grow</p>
+                </div>
+                <div class="card__arrow">
+                    {% include icon/forwards.html %}
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="card-menu-section__card">
+        <a href="/levels">
+            <div class="card__avatar">
+                <h3>{% include icon/dial.html class="white" %} Levels</h3>
+            </div>
+            <div class="card__information">
+                <div class="card__information__content">
+                    <p>View the seniority levels at {{company_name}}</p>
+                </div>
+                <div class="card__arrow">
+                    {% include icon/forwards.html %}
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="card-menu-section__card">
+        <a href="/team">
+            <div class="card__avatar">
+                <h3>{% include icon/person.html class="white" %} Team</h3>
+            </div>
+            <div class="card__information">
+                <div class="card__information__content">
+                    <p>View the {{company_name}} team</p>
+                </div>
+                <div class="card__arrow">
+                    {% include icon/forwards.html %}
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

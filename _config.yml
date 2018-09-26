@@ -1,0 +1,19 @@
+title: Progression Pack
+baseurl: "" 
+url: ""
+framework_name: Careers
+version: "0.1.1"
+
+include: ['_pages']
+exclude: ['bin', 'Makefile', 'README.md', 'Gemfile', 'Gemfile.lock']
+
+collections:
+  skills:
+    output: true
+  team:
+    output: true
+  levels:
+    output: true
+
+sass:
+  style: compressed

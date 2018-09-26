@@ -1,0 +1,46 @@
+---
+layout: base
+permalink: "/team/"
+title: Team
+description: All the people in the design team
+order: 3
+icon: person
+---
+
+{% assign instructions = site.data.instructions.records %}
+{% assign information = site.data.information.records %}
+{% assign skills = site.data.skills.records %}
+{% assign levels = site.data.levels.records %}
+{% assign team = site.data.team.records %}
+
+<div class="title-section">
+    <div class="title-section__content">
+        {% include icon/person.html class="white large" %}
+        <h1 class="title-section__title">{{page.title}}</h1>
+        <p class="title-section__text">{{page.description}}</p>
+    </div>
+</div>
+<div class="team-section">
+  {% for team_member in team %}
+  {% if jekyll.environment == "production" %}
+  <a class="" href="../team/{{team_member.id}}">
+  {% else %}
+  <a class="" href="#">
+  {% endif %}
+  <div class="team-member">
+    <div class="team-member__avatar" style="background-image: url('{{ team_member.fields.photo[0].thumbnails.large.url }}')">
+    </div>
+    <div class="team-member__information">
+      <h5>{{team_member.fields.name}}</h5>
+      {% assign title = team_member.fields.title %}
+      {% for level in levels %}
+      {% if level.id == title[0] %}
+      <p>{{level.fields.name}}</p>
+      {% if jekyll.environment == "production" %}<p class="grey">{{team_member.fields.self-points}} points</p>{% endif %}
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  </a>
+  {% endfor %}
+</div>

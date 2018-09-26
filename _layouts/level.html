@@ -1,0 +1,81 @@
+---
+layout: base
+---
+
+{% assign instructions = site.data.instructions.records %}
+{% assign information = site.data.information.records %}
+{% assign skills = site.data.skills.records %}
+{% assign levels = site.data.levels.records %}
+{% assign team = site.data.team.records %}
+
+<div class="breadcrumb-section">
+    <div class="breadcrumb-section__content">
+        <a href="/levels" class="breadcrumb__content__link">{% include icon/back.html %} back to levels</a>
+    </div>
+</div>
+{% for level in levels %}
+{% if level.id == page.level_id %}
+<div class="level-section">
+    <div class="level-section__header">
+        <div class="level-section__header__title">
+            <h1>{{level.fields.name}}</h1>
+        </div>
+        <p class="level-section__header__description">{{level.fields.role}}</p>
+        <div class="level-section__header__meta">
+            <div class="level-section__header__points">
+                <p>Points Required:</p>
+                <ul class="points-list">
+                    <li class="points-list__item Human">{% include icon/star.html class="Human" %}{{level.fields.human-points}}</li>
+                    <li class="points-list__item Maker">{% include icon/star.html class="Maker" %}{{level.fields.maker-points}}</li>
+                    <li class="points-list__item Leader">{% include icon/star.html class="Leader" %}{{level.fields.leader-points}}</li>
+                </ul>
+            </div>
+            <div class="level-section__header__team">
+                {% if level.fields.people != null %}<p>Team members:</p>{% else %}<p>No team members at this level</p>{% endif %}
+                {% for person in level.fields.people %}
+                {% for team_member in team %}
+                {% if team_member.id == person %}
+                <a class="panel__item" href="../team/{{team_member.id}}">
+                    <div class="panel-item__avatar panel-item__avatar--small" style="background-image: url('{{ team_member.fields.photo[0].url }}')"></div>
+                </a>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="simple-section">
+    <h2>Skills required</h2>
+</div>
+{% assign skills_by_pillar = skills | group_by: "fields.pillar" | reverse %}
+{% for skill_pillar in skills_by_pillar %}
+<div class="level-section">
+    {% assign pillar_name = skill_pillar.name | remove: '["' | remove: '"]' %}
+    <h3>{{pillar_name}}</h3>
+    {% for skills_req in level.fields.skill-requirements %}
+    {% assign skills_ordered = skill_pillar.items | sort: "fields.track-number" %}
+    {% for skill in skills_ordered %}
+    {% if skill.id == skills_req %}
+    <div class="level-section__group">
+        <div class="level-section__group--header">
+            <p class="level-section__group__description"><b>{{ skill.fields.track-name}}:</b> {{ skill.fields.description }}</p>
+            <div class="level-section__group__meta">
+                <div class="points-list__item nopad {{skill.fields.pillar}}">{% include icon/star.html class=skill.fields.pillar %}{{ skill.fields.points }} ({{ skill.fields.level }})</div>
+                <button class="btn-text--light level-group__reveal-button" onClick="toggle_visibility({{skill.id}})">Show behaviours</button>
+            </div>
+        </div>
+        <ul id="{{skill.id}}" class="reveal level-group__reveal">
+            {% if skill.fields.behaviour-1 %}<li class="behaviour-{{pillar_name}}"><p class="content-group__reveal__item">{{skill.fields.behaviour-1 }}</p></li>{% endif %}
+            {% if skill.fields.behaviour-2 %}<li class="behaviour-{{pillar_name}}"><p class="content-group__reveal__item">{{skill.fields.behaviour-2 }}</p></li>{% endif %}
+            {% if skill.fields.behaviour-3 %}<li class="behaviour-{{pillar_name}}"><p class="content-group__reveal__item">{{skill.fields.behaviour-3 }}</p></li>{% endif %}
+            {% if skill.fields.behaviour-4 %}<li class="behaviour-{{pillar_name}}"><p class="content-group__reveal__item">{{skill.fields.behaviour-4 }}</p></li>{% endif %}
+        </ul>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+</div>
+{% endfor %}
+{% endif %}
+{% endfor %}

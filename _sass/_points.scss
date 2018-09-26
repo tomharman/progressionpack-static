@@ -1,0 +1,16 @@
+.points-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.points-list__item {
+    padding-right: 1rem;
+    display: flex;
+    align-items: center;
+    color: $color-text-light;
+    &.Human {color: $color-human-dark;}
+    &.Maker {color: $color-maker-dark;}
+    &.Leader {color: $color-leader-dark;}
+    &.nopad {
+        padding-right: 0;
+    }
+}

@@ -1,0 +1,21 @@
+.title-section {
+    background-color: $title-bg-color;
+    @include md {
+        margin-bottom: 1rem;
+    }
+    .title-section__content {
+        @include padded-section;
+        .title-section__logo {
+            max-height: 100px;
+            margin-bottom: 1rem;
+        }
+        .title-section__title {
+            color: white;   
+            margin-bottom: 0.5rem;
+        }
+        .title-section__text {
+            color: white;   
+            font-size: $text-size-xlarge;
+        }
+    }
+}

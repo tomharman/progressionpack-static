@@ -1,0 +1,141 @@
+.skill-header-section {
+    .skill-header-section__content {
+        @include padded-section;
+    }
+}
+
+.skill-section {
+    @include card-section;
+    overflow: hidden;
+    @include print {
+        border: 1px solid black;
+        // page-break-inside: avoid;
+        page-break-after: always;
+        max-width: 100vw;
+    }
+    .skill-track__header {
+        padding: 1rem;
+        @include md {
+            padding: 2rem;
+        }
+        &.header-Human {
+            background-color: $color-human-light;
+        }
+        &.header-Maker {
+            background-color: $color-maker-light;
+        }
+        &.header-Leader {
+            background-color: $color-leader-light;
+        } 
+        .skill-track__title {
+        }
+        .skill-track__description {
+            font-size: $text-size-large;
+            @include md {
+                font-size: $text-size-xlarge;
+            }
+        }
+    }
+    .skill-track__levels {
+        padding: 1rem;
+        @include md {
+            padding: 2rem;
+        }
+        .skill-track__level {
+            margin: 1rem 0;
+            display: grid;
+            grid-template-rows: auto auto;
+            border-bottom: 1px solid $color-grey-light;
+            @include print {
+                padding-bottom: 1rem;
+                border-bottom: 1px solid black;
+            }
+            &:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+            .skill-track__level__header {
+                display: flex;
+                flex-direction: column;
+                padding-bottom: 1rem;
+                @include print {
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+                .skill-track__level__description {
+                    line-height: 1.4;
+                    flex: 1;
+                    align-content: center;
+                    font-size: $text-size;
+                    @include md {
+                        font-size: $text-size-large;
+                        max-width: $screen-sm-min;
+                    }
+                    @include lg {
+                        font-size: $text-size-xlarge;
+                    }
+                    @include print {
+                        max-width: $screen-xl-min;
+                    }
+                }
+                .skill-track__level__meta {
+                    display: flex;
+                    align-items: center;
+                    > * {
+                        font-size: $text-size;
+                        @include md {
+                            font-size: $text-size-large;
+                        }
+                    }
+                    .skill-track__level__reveal-button {
+                        color: $color-text-light;
+                        margin-left: 1rem;
+                        @include print {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            .skill-track__reveal {
+                display: grid;
+                grid-gap: 0.5rem;
+                grid-template-columns: repeat(1, 1fr);
+                @include md {
+                    grid-template-columns: repeat(2, 1fr);
+                    font-size: $text-size-large;
+                }
+                overflow: hidden;
+                height: 0;
+                -webkit-transition: height 2s spring; /* Safari */
+                transition: height 2s spring;
+                &.show {
+                    height: auto;
+                    margin-bottom: 1rem;
+                    li {
+                        padding: 1rem;
+                        background-color: $color-grey-light;
+                        border-radius: $border-radius;
+                        &.behaviour-Human {
+                            background-color: $color-human-light;
+                        }
+                        &.behaviour-Maker {
+                            background-color: $color-maker-light;
+                        }
+                        &.behaviour-Leader {
+                            background-color: $color-leader-light;
+                        }
+                    }
+                }
+                @include print {
+                    height: auto;
+                    font-size: 5pt !important;
+                    li {
+                        border: 1px solid #ccc;
+                        padding: 1rem;
+                        border-radius: $border-radius;
+                    }
+                }
+            }
+        }
+    }
+}

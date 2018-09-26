@@ -1,0 +1,100 @@
+---
+layout: base
+---
+
+{% assign instructions = site.data.instructions.records %}
+{% assign information = site.data.information.records %}
+{% assign skills = site.data.skills.records %}
+{% assign levels = site.data.levels.records %}
+{% assign team = site.data.team.records %}
+
+{% assign tracks_type = skills | group_by: "fields.pillar" | reverse %}
+
+<div class="breadcrumb-section">
+    <div class="breadcrumb-section__content">
+        <a href="/team" class="breadcrumb__content__link">{% include icon/back.html %} back to team</a>
+    </div>
+</div>
+
+
+{% for team_member in team %}
+{% if team_member.id == page.person_id %}
+<div class="team-member-profile-section">
+  <div class="profile-section">
+    <div class="profile-section__avatar__holder">
+      <div class="profile-section__avatar" style="background-image: url('{{ team_member.fields.photo[0].thumbnails.large.url }}')">
+        </div>
+      </div>
+      <div class="profile-section__details">
+        <h2 class="profile-section__title">{{ team_member.fields.name }}</h2>
+        {% assign title = team_member.fields.title %}
+        {% for level in levels %}
+        {% if level.id == title[0] %}
+        <p class="profile-section__meta">{{level.fields.name}} ({{ team_member.fields.self-points }} points)</p>
+        {% endif %}
+        {% endfor %}
+        <a href="{{site.url}}/assess" class="btn--brand">Start an assessment for {{ team_member.fields.name }}</a><br>
+        <a href="{{site.url}}/goal" class="btn--brand">Create a goal for {{ team_member.fields.name }}</a>
+      </div>
+    </div>
+</div>
+
+<div class="team-member-sections">
+  {% for track_type in tracks_type %}
+  <div class="team-member-section team-member-section__panel--{{track_type.items[0].fields.pillar}}">
+    <h3 class="panel__title">{{track_type.name | remove: '["' | remove: '"]'}} skills</h3>
+    <ul>
+      {% assign skill_tracks = track_type.items | group_by: "fields.track-name" %}
+      {% for skill_track in skill_tracks %}
+      <li class="panel__item">
+        <h5 class="panel-item__heading">{{skill_track.name}}</h5>
+        {% for behaviour in skill_track.items %}
+        {% for achieved_skill in team_member.fields.self-assessment %}
+        {% if achieved_skill == behaviour.id %}
+        <div class="panel-item__scale">
+          {% if behaviour.fields.level == "Training" %}
+          <div class="block block-filled"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          {% elsif behaviour.fields.level == "Competent" %}
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          {% elsif behaviour.fields.level == "Excelling" %}
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          {% elsif behaviour.fields.level == "Teaching" %}
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block"></div>                          
+          {% elsif behaviour.fields.level == "Leading" %}
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>   
+          {% endif %}
+        </div>
+        <p class="panel-item__scale-descriptor">{{behaviour.fields.level}} ({{behaviour.fields.points}} points)</p>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+</div>
+  
+  {% endif %}
+  {% endfor %}
+

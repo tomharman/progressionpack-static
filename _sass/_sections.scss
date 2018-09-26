@@ -1,0 +1,75 @@
+@mixin section {
+    margin: 0 auto;
+    @include md {
+      margin: 0 1rem;
+      border-radius: $border-radius;
+    }
+    @include lg {
+        margin: 0 1rem;
+        max-width: $screen-md-min;
+    }
+    @include xl {
+      max-width: $screen-xl-min - 24rem;
+      margin: 0 auto;
+    }
+}
+
+.section {
+    @include section;
+}
+
+@mixin padded-section {
+    @include section;
+    padding: 1rem;
+    @include lg {
+        padding: 2rem;
+    }
+}
+
+@mixin simple-section {
+    @include padded-section;
+    @include lg {
+        padding: 0 2rem;
+    }
+    @include xl {
+        max-width: $screen-xl-min - 20rem;
+    }
+}
+
+.simple-section {
+    @include simple-section;
+}
+
+@mixin card-section {
+    @include section;
+    background-color: white;
+    margin-top: 0;
+    border-top: 2px solid $color-grey-light;
+    @include md {
+      margin-top: 1rem; 
+      margin-bottom: 1rem;
+      border-top: none;
+    }
+}
+
+@mixin padded-card-section {
+    @include padded-section;
+    @include card-section;
+}
+
+.card-section {
+    @include padded-card-section;
+}
+
+.section-Human {
+    background-color: $color-human;
+    * {color: white;}
+}
+.section-Maker {
+    background-color: $color-maker;
+    * {color: white;}
+}
+.section-Leader {
+    background-color: $color-leader;
+    * {color: white;}
+}
