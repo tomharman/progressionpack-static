@@ -61,7 +61,7 @@ cd path/to/your/progression-pack
 ```
 4. run `pip3 install -r requirements.txt` to install python requirements _(You'll need [python3](https://realpython.com/installing-python/#macos-mac-os-x) installed for this command to work._
 5. In terminal, run the command `export APP_ID=yourappid && export APP_KEY=yourappkey` (replacing with your own details). This will add these to your current terminal session, so you'll need to rerun in any new windows or sessions.
-6. run `make progression-pack` to create your team and level pages.
+6. run `make pp` to create your team and level pages.
 
 
 ### Step 2. Run Jekyll
@@ -81,11 +81,11 @@ The Progression Pack UI also by default shows links to team members, including s
 
 Just go into `netlify.toml` and change the line 
 ```
-command = "make progression-pack && JEKYLL_ENV=production jekyll build"`
+command = "make pp && JEKYLL_ENV=production jekyll build"`
 ```
 to
 ```
-command = "make progression-pack && JEKYLL_ENV=teamsafe jekyll build"
+command = "make pp && JEKYLL_ENV=teamsafe jekyll build"
 ```
 Then save and commit-push to Github. Your next build will have removed any links to team members.
 
