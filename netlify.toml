@@ -1,6 +1,6 @@
-# Change JEKYLL_ENV to 'teamsafe' to hide team folder
+# Change build command to 'make build-teamsafe' to hide team folder
 [build]
-  command = "make pp && JEKYLL_ENV=production jekyll build"
+  command = "make build"
   publish = "_site/"
 
 [template.environment]
