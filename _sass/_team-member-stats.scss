@@ -52,12 +52,101 @@
             border-radius: $border-radius;
             border: 1px solid $color-grey-light;
             box-shadow: $deep-shadow;
-            padding: 1rem;
+            padding: 1rem 1rem 0.5rem;
             .graph {
-                background-color: $color-grey-light;
                 border-radius: $border-radius;
                 min-height: 100px;
-                padding-bottom: 0.5rem;
+                margin-bottom: 0.5rem;
+                &.graph--skills {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    grid-column-gap: 0.5rem;
+                    .pillar {
+                        display: grid;
+                        grid-gap: 0.1rem;
+                        .track {
+                            background-color: $color-grey-light;
+                            border-radius: $border-radius/2;
+                            display: grid;
+                            position: relative;
+                            .score {
+                                background-color:$color-brand;
+                                border-radius: $border-radius/2;
+                            }
+                            .name {
+                                position: absolute;
+                                visibility: hidden;
+                                background-color: white;
+                                border-radius: $border-radius/2;
+                                box-shadow: $deep-shadow;
+                                padding: 0.3rem 0.5rem;
+                                z-index: 2;
+                                font-size: $text-size-small/1.4;
+                                top: 1rem;
+                                left: 0.5rem;
+                                span {
+                                    font-weight: 700;
+                                }
+                            }
+                            &:hover .name {
+                                visibility: visible;
+                            }
+                        }
+                    }
+                }
+                &.graph--points {
+                    display: grid;
+                    grid-template-rows: auto 20px auto;
+                    grid-template-areas:
+                        "top"
+                        "scale"
+                        "bottom";
+                    .points-holder {
+                        grid-area: scale;
+                        position: relative;
+                        background-color: $color-grey-light;
+                        border-radius: $border-radius;
+                        display: grid;
+                        .points {
+                            position: absolute;
+                            height: 100%;
+                            border-radius: $border-radius;
+                            .name {
+                                background-color: white;
+                                border-radius: $border-radius/2;
+                                box-shadow: $deep-shadow;
+                                padding: 0.3rem 0.5rem;
+                                z-index: 2;
+                                font-size: $text-size-small/1.4;
+                                max-width: 100px;
+                                display: relative;
+                                span {
+                                    font-weight: 700;
+                                }
+                            }
+                            &.self {
+                                background-color: $color-brand;
+                                .name {
+                                    border: 2px solid $color-brand;
+                                    margin-top: -3rem;
+                                }
+                            }
+                            &.current {
+                                border-radius: 0;
+                                border-right: 2px dotted white;
+
+                            }
+                            &.goal {
+                                background-color: $color-warning;
+                                .name {
+                                    border: 2px solid $color-warning;
+                                    margin-top: 1.3rem;
+                                    margin-right: 0;
+                                }
+                            }
+                        }
+                    }
+                }
             }
             .title {
                 text-align: center;

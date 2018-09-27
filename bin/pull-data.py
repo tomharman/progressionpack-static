@@ -18,6 +18,7 @@ if not APP_ID or not APP_KEY:
 TABLE_TO_FILENAME = {
         'INSTRUCTIONS': 'instructions.json',
         'Setup': 'information.json',
+        'Tracks': 'tracks.json',
         'Skills': 'skills.json',
         'Seniority Levels': 'levels.json',
         'Team': 'team.json',

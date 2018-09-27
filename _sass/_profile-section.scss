@@ -22,6 +22,7 @@
         grid-column-gap: 1rem;
         justify-items: center;
         .profile-section__avatar__holder {
+            background-color: $color-brand-dark;
             width: 5rem;
             border: 0.2rem solid $background-color;
             border-radius: 500px;
@@ -39,11 +40,26 @@
                 margin-top: 0.5rem;
             }
             .profile-section__meta {
-                font-size: $text-size-large;
-                padding-bottom: 1rem;
+                padding: 0.5rem 0 1rem;
+                display: flex;
+                align-items: center;
+                p {
+                    font-size: $text-size-large;
+                    padding: 0 0.5rem;
+                    display: flex;
+                    span {
+                        color: $color-brand;
+                        display: flex;
+                        align-items: center;
+                        padding-right: 0.3rem;
+                    }
+                }
             }
         }
         .profile-section__cta {
+            a {
+                margin: 0 0.5rem;
+            }
             @include md {
                 display: flex;
             }

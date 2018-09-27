@@ -37,7 +37,7 @@ layout: base
         {% for track_level in track_items %}
         <div class="skill-track__level">
             <div class="skill-track__level__header">
-                <p class="skill-track__level__description"><b>{{track_level.fields.skill-descriptor}}: </b>{{track_level.fields.description}}</p>
+                <p class="skill-track__level__description"><b>{{track_level.fields.name}}: </b>{{track_level.fields.description}}</p>
                 <div class="skill-track__level__meta">
                     <div class="points-list__item nopad {{page.pillar_name}}">{% include icon/star.html class=page.pillar_name %}{{track_level.fields.points}}</div>
                     <button class="btn-text--light skill-track__level__reveal-button" onClick="toggle_visibility({{track_level.id}})">Show behaviours</button>

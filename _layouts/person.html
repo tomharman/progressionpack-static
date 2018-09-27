@@ -4,11 +4,15 @@ layout: base
 
 {% assign instructions = site.data.instructions.records %}
 {% assign information = site.data.information.records %}
+{% assign tracks = site.data.tracks.records %}
 {% assign skills = site.data.skills.records %}
 {% assign levels = site.data.levels.records %}
 {% assign team = site.data.team.records %}
 
-{% assign tracks_type = skills | group_by: "fields.pillar" | reverse %}
+{% assign tracks_type = tracks | group_by: "fields.pillar-number" %}
+{% assign sorted_pillars = tracks_type | sort:"name" %}
+
+{% assign skills_type = skills | group_by: "fields.pillar" | reverse %}
 
 <div class="breadcrumb-section">
     <div class="breadcrumb-section__content">
@@ -16,9 +20,25 @@ layout: base
     </div>
 </div>
 
-
 {% for team_member in team %}
 {% if team_member.id == page.person_id %}
+
+{% assign current_level = team_member.fields.current-level %}
+{% assign goal_level = team_member.fields.goal-level %}
+
+{% for level in levels %}
+{% if level.id == goal_level[0] %}
+  {% assign gl = level %}
+{% endif %}
+{% endfor %}
+
+{% for level in levels %}
+{% if level.id == current_level[0] %}
+  {% assign cl = level %}
+{% endif %}
+{% endfor %}
+
+
 <div class="team-member-profile-section">
   <div class="profile-section">
     <div class="profile-section__avatar__holder">
@@ -27,39 +47,86 @@ layout: base
       </div>
       <div class="profile-section__details">
         <h2 class="profile-section__title">{{ team_member.fields.name }}</h2>
-        {% assign title = team_member.fields.title %}
-        {% for level in levels %}
-        {% if level.id == title[0] %}
-        <p class="profile-section__meta">{{level.fields.name}} • {{ team_member.fields.self-points }} points</p>
-        {% endif %}
-        {% endfor %}
+        <div class="profile-section__meta">
+          <p>{{cl.fields.name}}</p>
+          <p><span>{% include icon/star.html class="brand" %}{{ team_member.fields.self-points }}</span> points</p>
+        </div>
       </div>
       <div class="profile-section__cta">
-        <a href="{{site.url}}/assess" class="btn--brand">Start an assessment for {{ team_member.fields.name }}</a><br>
-        <a href="{{site.url}}/goal" class="btn--brand">Create a goal for {{ team_member.fields.name }}</a>
+        <a href="{{site.url}}/assess" class="btn--text">Start assessment</a><br>
+        <a href="{{site.url}}/goal" class="btn--text">Create goal</a>
       </div>
     </div>
 </div>
+
 <div class="team-member-stats">
-  <div class="team-member-stats__toggler">Your path to: <a href="#">Individual Contributor 4 {% include icon/down.html %}</a></div>
+  <div class="team-member-stats__toggler">Your path to <a href="/levels/{{level.id}}">{{gl.fields.name}}</a></div>
   <div class="team-member-stats__blurb">
-    <p class="team-member-stats__blurb__title">You’re <span>120 points</span> and <span>four required skills</span> away from qualifying for this role.</p>
+    <p class="team-member-stats__blurb__title">You’re <span>{{gl.fields.points | minus: team_member.fields.self-points }} points</span> and <span>n required skills</span> away from qualifying for this role.</p>
     <p class="team-member-stats__blurb__disclaimer">Promotions are also dependent on managers discretion and business need</p>
   </div>
   <div class="team-member-stats__graphs">
     <div class="graph-holder">
-      <div class="graph"></div>
+      <div class="graph graph--skills">
+
+        {% for pillar in sorted_pillars %}
+        <div class="pillar">
+        {{pillar.items[0].fields.pillar}}
+        
+          {% for track_in_pillar in pillar.items %}
+            <div class="track" onClick="location.href='#'" aria-labelledby="{{track_in_pillar.fields.name}}">
+              <div class="name">{{track_in_pillar.fields.name}}</div>
+            {% assign skills_in_track = track_in_pillar.fields.skills %}
+            {% for skill_in_track in skills_in_track %}
+        
+            {% for current_skill in team_member.fields.self-assessment %}
+            {% if current_skill == skill_in_track %}
+
+            {% for skill in skills %}
+            {% if skill.id == current_skill %}
+              <div class="name">{{track_in_pillar.fields.name}}: <span>{{skill.fields.level}}</span></div>
+              <div class="score" style="width: {{skill.fields.points}}%"></div>
+            {% endif %}
+            {% endfor %}
+      
+            {% else %}
+      
+            {% endif %}
+      
+            {% endfor %}
+            {% endfor %}
+            </div>
+        
+            
+          {% endfor %}
+        
+        </div>
+        {% endfor %}
+
+      </div>
       <p class="title">Required Skills</p>
     </div>
     <div class="graph-holder">
-      <div class="graph"></div>
+      <div class="graph graph--points">
+        <!-- <p>Current points: {{ team_member.fields.self-points }}</p> -->
+        <div class="points-holder">
+          <div class="points goal" style="width: 100%;">
+            <div class="name">{{gl.fields.name}}: {{ gl.fields.points }} points</div>
+          </div>
+          <div class="points self" style="width: {{ team_member.fields.self-points | divided_by: 10 }}%">
+              <div class="name">Current points: {{ team_member.fields.self-points }}</div>
+            </div>
+          <div class="points current" style="width: {{cl.fields.points | divided_by: 10}}%"></div>
+        </div>
+        <!-- <p>{{gl.fields.name}}: {{ gl.fields.points }} points</p> -->
+      </div>
       <p class="title">Required Points</p>
     </div>
   </div>
 </div>
 
 <div class="team-member-sections">
-  {% for track_type in tracks_type %}
+  {% for track_type in skills_type %}
   <div class="team-member-section team-member-section__panel--{{track_type.items[0].fields.pillar}}">
     <h3 class="panel__title">{{track_type.name | remove: '["' | remove: '"]'}} skills</h3>
     <ul>

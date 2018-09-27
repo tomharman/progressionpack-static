@@ -32,7 +32,7 @@ icon: person
     </div>
     <div class="team-member__information">
       <h5>{{team_member.fields.name}}</h5>
-      {% assign title = team_member.fields.title %}
+      {% assign title = team_member.fields.current-level %}
       {% for level in levels %}
       {% if level.id == title[0] %}
       <p>{{level.fields.name}}</p>
