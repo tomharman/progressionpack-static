@@ -100,7 +100,7 @@ command = "make build-teamsafe"
 ```
 Then save and commit-push to Github. Your next build will have removed any links to team members.
 
-The same also works locally. Just run `make serve-teamsafe` or `make-build-teamsafe` to test.
+The same also works locally. Just run `make serve-teamsafe` or `make build-teamsafe` to test.
 
 _If running locally, remember to also change your jekyll serve command accordingly_
 
