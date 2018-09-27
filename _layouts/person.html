@@ -30,13 +30,32 @@ layout: base
         {% assign title = team_member.fields.title %}
         {% for level in levels %}
         {% if level.id == title[0] %}
-        <p class="profile-section__meta">{{level.fields.name}} ({{ team_member.fields.self-points }} points)</p>
+        <p class="profile-section__meta">{{level.fields.name}} • {{ team_member.fields.self-points }} points</p>
         {% endif %}
         {% endfor %}
+      </div>
+      <div class="profile-section__cta">
         <a href="{{site.url}}/assess" class="btn--brand">Start an assessment for {{ team_member.fields.name }}</a><br>
         <a href="{{site.url}}/goal" class="btn--brand">Create a goal for {{ team_member.fields.name }}</a>
       </div>
     </div>
+</div>
+<div class="team-member-stats">
+  <div class="team-member-stats__toggler">Your path to: <a href="#">Individual Contributor 4 {% include icon/down.html %}</a></div>
+  <div class="team-member-stats__blurb">
+    <p class="team-member-stats__blurb__title">You’re <span>120 points</span> and <span>four required skills</span> away from qualifying for this role.</p>
+    <p class="team-member-stats__blurb__disclaimer">Promotions are also dependent on managers discretion and business need</p>
+  </div>
+  <div class="team-member-stats__graphs">
+    <div class="graph-holder">
+      <div class="graph"></div>
+      <p class="title">Required Skills</p>
+    </div>
+    <div class="graph-holder">
+      <div class="graph"></div>
+      <p class="title">Required Points</p>
+    </div>
+  </div>
 </div>
 
 <div class="team-member-sections">

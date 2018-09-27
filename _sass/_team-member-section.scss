@@ -1,7 +1,3 @@
-.team-member-profile-section {
-    @include padded-card-section; 
-}
-
 .team-member-sections {
     @include simple-section;
     @include md {
