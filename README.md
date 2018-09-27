@@ -41,7 +41,11 @@ When you've completed this step, your deploy should begin! The domain name will 
 
 If you head to your Github account you'll also see a new repository. You'll need this to run Progression Pack locally and make any styling changes.
 
-If all you want to do is add your brand colour, you can do that from within Github. Just head to `/blob/master/_sass/_variables.scss` and edit the `$color-brand` variable to your brand colour. You can also make decisions about UI elements towards the bottom of that file.
+If all you want to do is add your brand colour, you can do that from within Github. Just head to 
+```
+/blob/master/_sass/_variables.scss
+``` 
+and edit the `$color-brand` variable to your brand colour. You can also make decisions about the colours of other UI elements towards the bottom of that file.
 
 When you commit that file, Netlify will automatically push the changes to your live site.
 
@@ -65,7 +69,11 @@ _If you've not used git before, you may want to enlist the help of someone else 
 cd path/to/your/progression-pack
 ```
 4. run `pip3 install -r requirements.txt` to install python requirements _(You'll need [python3](https://realpython.com/installing-python/#macos-mac-os-x) installed for this command to work._
-5. In terminal, run the command `export APP_ID=yourappid && export APP_KEY=yourappkey` (replacing with your own details). This will add these to your current terminal session, so you'll need to rerun in any new windows or sessions.
+5. In terminal, run the command 
+```
+export APP_ID=yourappid && export APP_KEY=yourappkey
+```
+(replacing with your own details). This will add these to your current terminal session, so you'll need to rerun in any new windows or sessions.
 
 ### Step 2. Run Jekyll
 
@@ -91,6 +99,8 @@ to
 command = "make build-teamsafe"
 ```
 Then save and commit-push to Github. Your next build will have removed any links to team members.
+
+The same also works locally. Just run `make serve-teamsafe` or `make-build-teamsafe` to test.
 
 _If running locally, remember to also change your jekyll serve command accordingly_
 
