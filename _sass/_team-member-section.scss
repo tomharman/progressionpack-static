@@ -53,11 +53,14 @@
                 justify-content: space-between;
                 margin-top: 0.5rem;
                 .block {
-                    width: 19%;
                     height: 0.5rem;
                     border-radius: 0.5rem;
                     background-color: $color-grey-light;
-        
+                    &.block-1 {width: 39%;}
+                    &.block-2 {width: 26%;}
+                    &.block-3 {width: 19%;}
+                    &.block-4 {width: 9%;}
+                    &.block-5 {width: 4%;}
                     &.block-filled {
                         background-color: $color-brand;
                     }

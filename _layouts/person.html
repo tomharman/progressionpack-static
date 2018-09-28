@@ -20,12 +20,23 @@ layout: base
     </div>
 </div>
 
+
+
 {% for team_member in team %}
   {% if team_member.id == page.person_id %}
 
     {% assign current_level = team_member.fields.current-level %}
     {% assign goal_level = team_member.fields.goal-level %}
 
+    <!-- Get direct reports -->
+    {% assign manages = "" | split: ',' %}
+    {% for teamo in team %}
+      {% for manago in team_member.fields.manages %}
+      {% if teamo.id == manago %}
+        {% assign manages = manages | push: teamo  %}
+      {% endif %}
+      {% endfor %}
+    {% endfor %}
 
     <!-- Get goal level id -->
     {% for level in levels %}
@@ -110,13 +121,18 @@ layout: base
       <div class="profile-section__details">
         <h2 class="profile-section__title">{{ team_member.fields.name }}</h2>
         <div class="profile-section__meta">
-          <p>{{cl.fields.name}}</p>
-          <p><span>{% include icon/star.html class="brand" %}{{ team_member.fields.self-points }}</span> points</p>
+          <div class="profile-section__role">
+            <p>{{cl.fields.name}}</p>
+            <p><span>{% include icon/star.html class="brand" %}{{ team_member.fields.self-points }}</span> points</p>
+          </div>
+          <div class="profile-section__team">
+            <p>{% if team_member.fields.manages != null %}Manages: {% for m in manages %}<a class="text--underline" href="/team/{{m.id}}">{{m.fields.name}}</a>{% endfor %}{% endif %}</p>
+          </div>
         </div>
       </div>
       <div class="profile-section__cta">
-        <a href="{{site.url}}/assess" class="btn--text">Start assessment</a><br>
-        <a href="{{site.url}}/goal" class="btn--text">Create goal</a>
+        <a href="{{site.url}}/assess" class="text--underline">Start assessment</a><br>
+        <a href="{{site.url}}/goal" class="text--underline">Create goal</a>
       </div>
     </div>
 </div>
@@ -225,35 +241,35 @@ layout: base
       <div class="pillar-item__scale-holder">
         <div class="pillar-item__scale">
           {% if behaviour.fields.level == "Training" %}
-          <div class="block block-filled"></div>
-          <div class="block"></div>
-          <div class="block"></div>
-          <div class="block"></div>
-          <div class="block"></div>
+          <div class="block block-1 block-filled"></div>
+          <div class="block block-2"></div>
+          <div class="block block-3"></div>
+          <div class="block block-4"></div>
+          <div class="block block-5"></div>
           {% elsif behaviour.fields.level == "Competent" %}
-          <div class="block block-filled"></div>
-          <div class="block block-filled"></div>
-          <div class="block"></div>
-          <div class="block"></div>
-          <div class="block"></div>
+          <div class="block block-1 block-filled"></div>
+          <div class="block block-2 block-filled"></div>
+          <div class="block block-3"></div>
+          <div class="block block-4"></div>
+          <div class="block block-5"></div>
           {% elsif behaviour.fields.level == "Excelling" %}
-          <div class="block block-filled"></div>
-          <div class="block block-filled"></div>
-          <div class="block block-filled"></div>
-          <div class="block"></div>
-          <div class="block"></div>
+          <div class="block block-1 block-filled"></div>
+          <div class="block block-2 block-filled"></div>
+          <div class="block block-3 block-filled"></div>
+          <div class="block block-4"></div>
+          <div class="block block-5"></div>
           {% elsif behaviour.fields.level == "Teaching" %}
-          <div class="block block-filled"></div>
-          <div class="block block-filled"></div>
-          <div class="block block-filled"></div>
-          <div class="block block-filled"></div>
-          <div class="block"></div>                          
+          <div class="block block-1 block-filled"></div>
+          <div class="block block-2 block-filled"></div>
+          <div class="block block-3 block-filled"></div>
+          <div class="block block-4 block-filled"></div>
+          <div class="block block-5"></div>                          
           {% elsif behaviour.fields.level == "Leading" %}
-          <div class="block block-filled"></div>
-          <div class="block block-filled"></div>
-          <div class="block block-filled"></div>
-          <div class="block block-filled"></div>
-          <div class="block block-filled"></div>   
+          <div class="block block-1 block-filled"></div>
+          <div class="block block-2 block-filled"></div>
+          <div class="block block-3 block-filled"></div>
+          <div class="block block-4 block-filled"></div>
+          <div class="block block-5 block-filled"></div>   
           {% endif %}
         </div>
         <p class="pillar-item__scale-descriptor">{{behaviour.fields.level}} ({{behaviour.fields.points}} points)</p>

@@ -56,7 +56,7 @@
     font-size: $text-size;
     border-radius: 500px;
     padding: 0;
-    text-decoration: none;
+    text-decoration: underline;
     &:active, &:hover, &:focus {
       color: darken($link-color, 10%);
     }
@@ -71,7 +71,7 @@
     font-size: $text-size;
     border-radius: 500px;
     padding: 0;
-    text-decoration: none;
+    text-decoration: underline;
     &:active, &:hover, &:focus {
       color: $color-brand-dark;
     }
