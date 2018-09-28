@@ -52,10 +52,11 @@
                     .name-holder {
                         display: flex;
                         justify-content: space-between;
+                        padding-bottom: 2rem;
                     }
                     .level {
                         padding: 1rem 0;
-                        border-bottom: 2px solid $color-grey-light;
+                        border-top: 2px solid $color-grey-light;
                         .level__title {
                             margin-bottom: 0.5rem;
                         }
