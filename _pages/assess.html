@@ -6,6 +6,72 @@ title: Assess
 
 {% assign assess_link = site.data.information.records[0].fields.assessment-form %}
 
-<div class="form-embed">
-    <iframe class="airtable-embed" scrolling="yes" src="https://airtable.com/embed/{{assess_link}}?backgroundColor=green" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent;"></iframe>
+{% assign skills = site.data.skills.records %}
+{% assign skills_type = skills | group_by: "fields.pillar-number" %}
+{% assign sorted_pillars = skills_type | sort:"name" %}
+
+<div class="warning-banner">
+    <p>It looks like you're on a small screen. Assessments are much easier on a wide screen!</p>
+</div>
+<div class="form-holder">
+    <div class="form-info">
+        <h1 id="top">Skills</h1>
+        <div class="skills-menu">
+            {% for pillar in sorted_pillars %}
+                <p class="skills-menu__header"><b><a href="#{{pillar.items[0].fields.pillar}}">{{pillar.items[0].fields.pillar}}</a></b></p>
+                {% assign sorted_tracks = pillar.items | order: "fields.track-number" %}
+                {% assign tracks = sorted_tracks | group_by: "fields.track-name" %}
+                <ul>
+                    {% for track in tracks %}
+                    <li><a href="#{{track.items[0].fields.track}}">{{track.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+        <div class="skills-list">
+            {% for pillar in sorted_pillars %}
+            <div class="pillar" id="{{pillar.items[0].fields.pillar}}">
+                <h3>{{pillar.items[0].fields.pillar}}</h3>
+                
+
+                {% assign sorted_tracks = pillar.items | order: "fields.track-number" %}
+                {% assign tracks = sorted_tracks | group_by: "fields.track-name" %}
+                
+                {% for track in tracks %}
+                <div class="skill" id="{{track.items[0].fields.track}}">
+                    <div class="name-holder">
+                        <h4>{{ track.name }}</h4>
+                        <a href="#top">{% include icon/down.html class="rotate" %}</a>
+                    </div>
+                    {% for track_level in track.items %}
+                    <div class="level">
+                        <h5 class="level__title">{{track_level.fields.name}}</h5>
+                        <p class="level__description">{{track_level.fields.description}}</p>
+                        <p class="level__behaviours-title">Example behaviours</p>
+                        <ul class="behaviours">
+                            {% if track_level.fields.behaviour-1 %} <li class="behaviour">{{track_level.fields.behaviour-1}}</li>{% endif %}
+                            {% if track_level.fields.behaviour-2 %} <li class="behaviour">{{track_level.fields.behaviour-2}}</li>{% endif %}
+                            {% if track_level.fields.behaviour-3 %} <li class="behaviour">{{track_level.fields.behaviour-3}}</li>{% endif %}
+                            {% if track_level.fields.behaviour-4 %} <li class="behaviour">{{track_level.fields.behaviour-4}}</li>{% endif %}
+                        </ul>
+                    </div>
+                    {% endfor%}
+                </div>
+                {% endfor %}
+                <!-- {{tracks}} -->
+                {% for sorted_track in sorted_tracks %}
+                <p>{{sorted_track.name }}</p>
+                {% endfor %}
+                <!-- {% assign tracks = sorted_tracks | group_by: "fields.track-name" %} -->
+                <!-- {% for sorted_track in tracks %}
+                <p>{{sorted_track.fields.name}}</p>
+                {% endfor %} -->
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="form-embed">
+        <iframe class="airtable-embed" scrolling="yes" src="https://airtable.com/embed/{{assess_link}}?backgroundColor=green" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent;"></iframe>
+    </div>
 </div>

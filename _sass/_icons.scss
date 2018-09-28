@@ -49,6 +49,9 @@
         width: 3rem;
         height: 3rem;
     }
+    &.rotate {
+        transform: rotate(180deg);
+    }
     &.header {
         width: 0.85rem;
         height: 0.85rem;

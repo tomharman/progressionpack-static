@@ -1,6 +1,88 @@
-.form-embed {
-    iframe {
-        overflow: scroll;
-        min-height: 100vh !important;
+.warning-banner {
+    background-color: $color-warning;
+    padding: 0.5rem;
+    p {
+        color: white;
+        font-weight: 700;
+        text-align: center;
+    }
+    @include lg {
+        display: none;
+    }
+
+}
+.form-holder {
+    display: grid;
+    grid-template-columns: 1fr;
+    @include lg {
+        grid-template-columns: 1fr 1fr;
+    }
+    .form-info {
+        display: none;
+        @include lg {
+            display: block;
+            padding: 1rem;
+            border-right: 1px solid $color-grey-light;
+            height: 100vh;
+            overflow: scroll;
+        }
+        .skills-menu {
+            margin: 1rem 0;
+            .skills-menu__header {
+                margin-top: 1rem;
+            }
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                li {
+                    margin-right: 0.5rem;
+                }
+            }
+        }
+        .skills-list {
+            display: flex;
+            flex-direction: column;
+            border-top: 2px solid $color-brand;
+            padding: 3rem 0;
+            .pillar {
+                margin-bottom: 3rem;
+                .skill {
+                    margin: 1rem 0;
+                    padding: 1rem 0;
+                    .name-holder {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                    .level {
+                        padding: 1rem 0;
+                        border-bottom: 2px solid $color-grey-light;
+                        .level__title {
+                            margin-bottom: 0.5rem;
+                        }
+                        .level__behaviours-title {
+                            padding-top: 1rem;
+                            opacity: 0.5;
+                            text-transform: uppercase;
+                            font-size: $text-size-small;
+                            font-weight: 700;
+                        }
+                        .behaviours {
+                            .behaviour {
+                                padding: 0 0.5rem;
+                                margin: 0.5rem 0;
+                                border-left: 2px solid $color-brand;
+                                font-size: $text-size;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .form-embed {
+        iframe {
+            overflow: scroll;
+            min-height: 100vh !important;
+        }
     }
 }
