@@ -117,6 +117,16 @@ _If running locally, remember to also change your jekyll serve command according
 _If you want to deploy more often than every 20 minutes you'll need to pay all of $12 for a year of the next tier of Easycron. This cronjob can alternatively be run with Zapier or various other services_
 
 
+---
+
+# Password protect your site
+
+There is no auth built into this site - it's static content so hard to secure reliably. 
+
+You should look to wherever you're hosting the site to provide the level of auth you need (For example, password protecting the entire site or specific pages, using oAuth to allow your Google Apps users access).
+
+If you're using the Netlify hosting, they provide password protection and basic Auth on their [Team Pro](https://www.netlify.com/pricing/#teams) plan, at $45/month.
+
 
 ---
 

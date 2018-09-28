@@ -15,9 +15,9 @@
     height: 100vh;
     @include md {
         grid-template-areas:
-        "header header"
+        "sidebar header"
         "sidebar content"
-        "footer footer";
+        "sidebar footer";
         grid-template-columns: minmax(14rem, auto) 1fr;
         grid-template-rows: auto 1fr auto;
     }

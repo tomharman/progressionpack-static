@@ -11,32 +11,54 @@
     margin: 2px 0;
 }
   
-  
-.btn--brand {
+@mixin button {
     @include button-reset;
-    background-color: $color-brand;
+    background-color: $button-color;
     color: white;
-    border-radius: 500px;
-    padding: 0.7rem 1rem;
-    text-decoration: none;
     font-size: $text-size-small;
+    border-radius: 500px;
+    text-decoration: none;
     &:active, &:hover, &:focus {
-        background-color: $color-brand-dark;
+        background-color: darken($button-color, 5%);
     }
+}
+
+.btn {
+    @include button;
+    padding: 0.7rem 1rem;
     @include md {
         font-size: $text-size;
     }
 }
+
+.btn--small {
+    @include button;
+    padding: 0.3rem 0.6rem;
+    font-size: $text-size-small;
+    @include md {
+        font-size: $text-size-small;
+    }
+}
+
+.btn--white-shadow {
+    @include button;
+    color: $color-text;
+    background-color: white;
+    border: 1px solid $color-grey-light;
+    box-shadow: $deep-shadow;
+    border-radius: $border-radius/2;
+    padding: 0.4rem 0.6rem;
+}
   
 .btn-text {
     @include button-reset;
-    color: $color-brand;
+    color: $link-color;
     font-size: $text-size;
     border-radius: 500px;
     padding: 0;
     text-decoration: none;
     &:active, &:hover, &:focus {
-      color: $color-brand-dark;
+      color: darken($link-color, 10%);
     }
     @include md {
       font-size: $text-size;

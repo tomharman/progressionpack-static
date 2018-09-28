@@ -1,8 +1,8 @@
 title: Progression Pack
 baseurl: "" 
 url: ""
-framework_name: Careers
-version: "0.1.1"
+framework_name: Design Careers
+version: "0.1.2"
 
 include: ['_pages']
 exclude: ['bin', 'Makefile', 'README.md', 'Gemfile', 'Gemfile.lock']

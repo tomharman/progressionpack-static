@@ -8,9 +8,20 @@
 {% assign assessments_updated = site.data.assessments.updated %}
 {% assign goals_updated = site.data.goals.updated %}
 
+{% assign company_name = site.data.information.records[0].fields.company-name %}
+{% assign logo_url = site.data.information.records[0].fields.logo[0].thumbnails.large.url %}
 
 <div class="sidebar">
     {% if jekyll.environment == "production" %}
+    <a class="sidebar__brand" href="/">
+        <div class="sidebar__icon">
+            <img src="{{logo_url}}" alt="" />
+        </div>
+        <div class="sidebar__brand-content">
+            <h4 class="brand__name">{{ company_name }}</h4>
+            <p class="brand__description">{{site.framework_name}}</p>
+        </div>
+      </a>
     <div class="sidebar-section">
         <h3 class="sidebar-section-title"><a href="/team">Team{% include icon/forwards.html class="brand" %}</a></h3>
         <ul class="sidebar-section__list">
@@ -47,8 +58,8 @@
         </ul>
     </div>
     <div class="sidebar__button-holder">    
-        <a href="{{site.url}}/assess" class="btn--brand">Start an assessment</a>
-        <a href="{{site.url}}/goal" class="btn--brand">Create a goal</a>
+        <a href="{{site.url}}/assess" class="btn">Start an assessment</a>
+        <a href="{{site.url}}/goal" class="btn">Create a goal</a>
     </div>
         <p class="last-updated">Last updated: <br>{{instructions_updated | date: " %d %b %Y at %H:%M"}}</p>
 </div>

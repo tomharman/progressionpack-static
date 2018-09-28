@@ -30,6 +30,11 @@
             fill: $color-brand;
         }
     }
+    &.warning {
+        path, polygon, rect, circle {
+            fill: $color-warning;
+        }
+    }
     &.brand-light {
         path, polygon, rect, circle {
             fill: lighten( $color-brand, 40% );

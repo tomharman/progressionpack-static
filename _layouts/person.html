@@ -4,11 +4,15 @@ layout: base
 
 {% assign instructions = site.data.instructions.records %}
 {% assign information = site.data.information.records %}
+{% assign tracks = site.data.tracks.records %}
 {% assign skills = site.data.skills.records %}
 {% assign levels = site.data.levels.records %}
 {% assign team = site.data.team.records %}
 
-{% assign tracks_type = skills | group_by: "fields.pillar" | reverse %}
+{% assign tracks_type = tracks | group_by: "fields.pillar-number" %}
+{% assign sorted_pillars = tracks_type | sort:"name" %}
+
+{% assign skills_type = skills | group_by: "fields.pillar" | reverse %}
 
 <div class="breadcrumb-section">
     <div class="breadcrumb-section__content">
@@ -16,9 +20,87 @@ layout: base
     </div>
 </div>
 
-
 {% for team_member in team %}
-{% if team_member.id == page.person_id %}
+  {% if team_member.id == page.person_id %}
+
+    {% assign current_level = team_member.fields.current-level %}
+    {% assign goal_level = team_member.fields.goal-level %}
+
+
+    <!-- Get goal level id -->
+    {% for level in levels %}
+      {% if level.id == goal_level[0] %}
+        {% assign gl = level %}
+      {% endif %}
+    {% endfor %}
+
+    <!-- Get goal skills as an array -->
+    {% assign gl_skills = "" | split: ',' %}
+    {% for gl_skill in gl.fields.skill-requirements %}
+      {% for skill in skills %}
+        {% if gl_skill == skill.id %}
+          {% assign gl_skills = gl_skills | push: skill  %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+
+
+    <!-- Get current level id -->
+    {% for level in levels %}
+      {% if level.id == current_level[0] %}
+        {% assign cl = level %}
+      {% endif %}
+    {% endfor %}
+
+    <!-- Get current skills as an array -->
+    {% assign current_skills = "" | split: ',' %}
+    {% for current_skill in team_member.fields.self-assessment %}
+      {% for skill in skills %}
+        {% if current_skill == skill.id %}
+          {% assign current_skills = current_skills | push: skill  %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+
+    {% assign missing_skills = "" | split: ',' %}
+
+    {% for pillar in sorted_pillars %}
+
+      {% for track in pillar.items %}
+        {% assign gs_score = 0 %}
+        {% for gs in gl_skills %}
+          {% for skill in track.fields.skills %}
+            {% if gs.id == skill %}
+              {% assign gs_score = gs.fields.level-number %}
+              <!-- <p style="color: red">{{gs.fields.name}} {{gs_score}}</p> -->
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        
+        {% assign cs_score = 0 %}
+        {% for cs in current_skills %}
+        {% for skill in track.fields.skills %}
+        {% if cs.id == skill %}
+              {% assign cs_score = cs.fields.level-number %}
+              <!-- <p style="color: blue">{{cs_score}}</p> -->
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+
+        {% if cs_score == 0 and gs_score != 0 %}
+          {% assign missing_skills = missing_skills | push: track.fields.name  %}
+        {% elsif gs_score > cs_score %}
+          {% assign missing_skills = missing_skills | push: track.fields.name  %}
+        {% endif %}
+
+
+      {% endfor %}
+
+    {% endfor %}
+
+
+
+
 <div class="team-member-profile-section">
   <div class="profile-section">
     <div class="profile-section__avatar__holder">
@@ -27,31 +109,121 @@ layout: base
       </div>
       <div class="profile-section__details">
         <h2 class="profile-section__title">{{ team_member.fields.name }}</h2>
-        {% assign title = team_member.fields.title %}
-        {% for level in levels %}
-        {% if level.id == title[0] %}
-        <p class="profile-section__meta">{{level.fields.name}} ({{ team_member.fields.self-points }} points)</p>
-        {% endif %}
-        {% endfor %}
-        <a href="{{site.url}}/assess" class="btn--brand">Start an assessment for {{ team_member.fields.name }}</a><br>
-        <a href="{{site.url}}/goal" class="btn--brand">Create a goal for {{ team_member.fields.name }}</a>
+        <div class="profile-section__meta">
+          <p>{{cl.fields.name}}</p>
+          <p><span>{% include icon/star.html class="brand" %}{{ team_member.fields.self-points }}</span> points</p>
+        </div>
+      </div>
+      <div class="profile-section__cta">
+        <a href="{{site.url}}/assess" class="btn--text">Start assessment</a><br>
+        <a href="{{site.url}}/goal" class="btn--text">Create goal</a>
       </div>
     </div>
 </div>
 
-<div class="team-member-sections">
-  {% for track_type in tracks_type %}
-  <div class="team-member-section team-member-section__panel--{{track_type.items[0].fields.pillar}}">
-    <h3 class="panel__title">{{track_type.name | remove: '["' | remove: '"]'}} skills</h3>
-    <ul>
-      {% assign skill_tracks = track_type.items | group_by: "fields.track-name" %}
-      {% for skill_track in skill_tracks %}
-      <li class="panel__item">
-        <h5 class="panel-item__heading">{{skill_track.name}}</h5>
-        {% for behaviour in skill_track.items %}
-        {% for achieved_skill in team_member.fields.self-assessment %}
-        {% if achieved_skill == behaviour.id %}
-        <div class="panel-item__scale">
+<div class="team-member-stats">
+  <div class="team-member-stats__toggler">Your path to <a href="/levels/{{gl.id}}">{{gl.fields.name}}</a></div>
+  <div class="team-member-stats__blurb">
+    <p class="team-member-stats__blurb__title">You’re <span>{{gl.fields.points | minus: team_member.fields.self-points }} points</span> and <span>{{missing_skills | size }} required skills</span> away from qualifying for this role.</p>
+    <p class="team-member-stats__blurb__disclaimer">Promotions are also dependent on managers discretion and business need</p>
+  </div>
+  <div class="team-member-stats__graphs">
+    <div class="graph-holder">
+      <div class="graph graph--skills">
+        {% for pillar in sorted_pillars %}
+        <div class="pillar">
+        
+          {% for track_in_pillar in pillar.items %}
+          <div class="track" onClick="location.href='#{{track_in_pillar.fields.name}}'" aria-labelledby="{{track_in_pillar.fields.name}}">
+            <div class="name">{{track_in_pillar.fields.name}}</div>
+
+            {% for missing_skill in missing_skills %}
+            {% if track_in_pillar.fields.name == missing_skill %}
+            <div class="missing_notif"></div>
+            {% endif %}
+            {% endfor %}
+
+            {% assign skills_in_track = track_in_pillar.fields.skills %}
+            {% for skill_in_track in skills_in_track %}
+        
+            {% for current_skill in team_member.fields.self-assessment %}
+            {% if current_skill == skill_in_track %}
+
+            {% for skill in skills %}
+            {% if skill.id == current_skill %}
+              <div class="name">{{track_in_pillar.fields.name}}: <span>{{skill.fields.level}}</span></div>
+              <div class="score" style="height: {{skill.fields.points}}%"></div>
+            {% endif %}
+            {% endfor %}
+            {% else %}
+      
+            {% endif %}
+      
+            {% endfor %}
+            {% endfor %}
+            </div>
+        
+            
+          {% endfor %}
+        
+        </div>
+        {% endfor %}
+
+      </div>
+      <div class="graph-skills__key">
+        {% for pillar in sorted_pillars %}
+        <div class="key__item">
+          {{pillar.items[0].fields.pillar}}
+        </div>
+        {%endfor%}
+      </div>
+      <p class="title">Required Skills</p>
+    </div>
+    <div class="graph-holder">
+      <div class="graph graph--points">
+        <div class="points-holder">
+          <div class="points goal" style="width: {{ gl.fields.points | divided_by: 10 }}%;">
+            <div class="name">{{gl.fields.name}}: {{ gl.fields.points }} points</div>
+          </div>
+          <div class="points self" style="width: {{ team_member.fields.self-points | divided_by: 10 }}%">
+            <div class="name">Currently {{ team_member.fields.self-points }} points</div>
+          </div>
+          <div class="points current" style="left: {{cl.fields.points | divided_by: 10}}%">
+            <div class="name">{{cl.fields.name}}: {{ cl.fields.points }} points</div>
+          </div>
+        </div>
+        <div class="graph--points__key">
+          <p>Currently: <span class="current">{% include icon/star.html class="brand" %}{{ team_member.fields.self-points }} points</span></p>
+          <p>{{gl.fields.name}}: <span class="goal">{% include icon/star.html class="warning" %}{{ gl.fields.points }} points</span></p>
+        </div>
+      </div>
+      <p class="title">Required Points</p>
+    </div>
+  </div>
+</div>
+
+{% for track_type in skills_type %}
+<div class="team-member-section">
+  <h3 class="pillar__title">{{track_type.name | remove: '["' | remove: '"]'}} skills</h3>
+  <div class="pillar__meta"></div>
+  <ul class="pillar__items">
+    {% assign skill_tracks = track_type.items | group_by: "fields.track-name" %}
+    {% for skill_track in skill_tracks %}
+    <li class="pillar__item" id="{{skill_track.name}}">
+      <div class="pillar-item__info">
+        <h5 class="pillar-item__heading">{{skill_track.name}}</h5>
+        <p class="pillar-item__description">{{skill_track.items[0].fields.track-description}}</p>
+        {% for missing_skill in missing_skills %}
+        {% if skill_track.name == missing_skill %}
+        <div class="missing-notif"></div>
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% for behaviour in skill_track.items %}
+      {% for achieved_skill in team_member.fields.self-assessment %}
+      {% if achieved_skill == behaviour.id %}
+      <div class="pillar-item__scale-holder">
+        <div class="pillar-item__scale">
           {% if behaviour.fields.level == "Training" %}
           <div class="block block-filled"></div>
           <div class="block"></div>
@@ -84,17 +256,17 @@ layout: base
           <div class="block block-filled"></div>   
           {% endif %}
         </div>
-        <p class="panel-item__scale-descriptor">{{behaviour.fields.level}} ({{behaviour.fields.points}} points)</p>
-        {% endif %}
-        {% endfor %}
-        {% endfor %}
-      </li>
+        <p class="pillar-item__scale-descriptor">{{behaviour.fields.level}} ({{behaviour.fields.points}} points)</p>
+      </div>
+      {% endif %}
       {% endfor %}
-    </ul>
-  </div>
-  {% endfor %}
+      {% endfor %}
+    </li>
+    {% endfor %}
+  </ul>
 </div>
+{% endfor %}
   
   {% endif %}
-  {% endfor %}
+{% endfor %}
 

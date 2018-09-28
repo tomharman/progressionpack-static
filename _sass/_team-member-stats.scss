@@ -1,0 +1,210 @@
+.team-member-stats {
+    @include simple-section;
+    border-bottom: 1px solid $color-grey-light;
+    display: grid;
+    grid-auto-rows: auto;
+    @include lg {
+        margin-top: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+    .team-member-stats__toggler {
+        font-weight: 700;
+        padding-bottom: 0.5rem;
+        display: flex;
+        justify-content: center;
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 0.3rem;
+            text-decoration: underline;
+            color: $color-text;
+            svg {
+                padding-left: 0.3rem;
+                height: 0.7rem;
+                width: 0.7rem;
+            }
+        }
+    }
+    .team-member-stats__blurb {
+        text-align: center;
+        .team-member-stats__blurb__title {
+            margin-bottom: 0;
+            span {
+                color: $color-warning;
+            }
+        }
+        .team-member-stats__blurb__disclaimer {
+            color: $color-text-light;
+            font-size: $text-size-small;
+        }
+    }
+    .team-member-stats__graphs {
+        margin: 1rem 0 2rem;
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-gap: 1rem;
+        @include md {
+            grid-template-rows: auto;
+            grid-template-columns: 1fr 1fr;
+        }
+        .graph-holder {
+            border-radius: $border-radius;
+            border: 1px solid $color-grey-light;
+            box-shadow: $deep-shadow;
+            padding: 1rem 1rem 0.5rem;
+            .graph-skills__key {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-column-gap: 0.5rem;
+                margin-bottom: 0.5rem;
+                .key__item {
+                    font-size: $text-size-small;
+                    color: $color-text-light;
+                    text-align: center;
+                }
+            }
+            .graph {
+                border-radius: $border-radius;
+                min-height: 100px;
+                margin-bottom: 0.2rem;
+                &.graph--skills {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    grid-column-gap: 1rem;
+                    .pillar {
+                        display: grid;
+                        grid-template-columns: repeat(8, 1fr); // Doesn't work if extra tracks are added.
+                        .track {
+                            cursor: pointer;
+                            background-color: $color-grey-light;
+                            margin: 0 0.2rem;
+                            border-radius: $border-radius*4;
+                            display: flex;
+                            flex-direction: column;
+                            position: relative;
+                            justify-content: flex-end;
+                            .score {
+                                background-color:$color-brand;
+                                border-radius: $border-radius*4;
+                                width: 100%;
+                            }
+                            .name {
+                                position: absolute;
+                                visibility: hidden;
+                                background-color: white;
+                                border-radius: $border-radius/2;
+                                box-shadow: $deep-shadow;
+                                padding: 0.3rem 0.5rem;
+                                z-index: 2;
+                                font-size: $text-size-small;
+                                top: 1rem;
+                                left: 0.5rem;
+                                span {
+                                    font-weight: 700;
+                                }
+                            }
+                            .missing_notif {
+                                border-radius: $border-radius*4;
+                                background-color: $color-warning;
+                                height: 0.8rem;
+                                width: 100%;
+                                margin-bottom: 0.1rem;
+                            }
+                            &:hover .name {
+                                visibility: visible;
+                            }
+                        }
+                    }
+                }
+                &.graph--points {
+                    display: grid;
+                    grid-template-rows: 1fr 1rem 1fr;
+                    grid-template-areas:
+                        "upper"
+                        "scale"
+                        "base";
+                    grid-row-gap: 0.2rem;
+                    .points-holder {
+                        grid-area: scale;
+                        position: relative;
+                        background-color: $color-grey-light;
+                        border-radius: $border-radius*2;
+                        display: grid;
+                        .points {
+                            position: absolute;
+                            height: 100%;
+                            border-radius: $border-radius;
+                            .name {
+                                background-color: white;
+                                position: absolute;
+                                visibility: hidden;
+                                border-radius: $border-radius/2;
+                                box-shadow: $deep-shadow;
+                                padding: 0.3rem 0.5rem;
+                                z-index: 2;
+                                font-size: $text-size-small;
+                                max-width: 100px;
+                                top: 1.5rem;
+                                right: 0;
+                                span {
+                                    font-weight: 700;
+                                }
+                            }
+                            &.self {
+                                background-color: $color-brand;
+                                .name {
+                                    border: 2px solid $color-brand;
+                                }
+                            }
+                            &.current {
+                                border-radius: 0;
+                                width: 5px;
+                                border-right: 2px dotted white;
+                                .name {
+                                    min-width: 100px;
+                                }
+                            }
+                            &.goal {
+                                background-color: $color-warning;
+                                .name {
+                                    border: 2px solid $color-warning;
+                                }
+                            }
+                            &:hover .name {
+                                visibility: visible;
+                            }
+                        }
+                    }
+                    .graph--points__key {
+                        grid-area: base;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        p {
+                            color: $color-text-light;
+                            font-size: $text-size-small;
+                            span {
+                                display: flex;
+                                align-items: center;
+                                svg {
+                                }
+                                &.current {
+                                    color: $color-brand;
+                                }
+                                &.goal {
+                                    color: $color-warning;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .title {
+                text-align: center;
+                font-size: $text-size;
+                font-weight: 700;
+            }
+        }
+    }
+}

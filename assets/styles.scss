@@ -14,6 +14,7 @@
 //sections
 @import "header";
 @import "footer";
+@import "sidebar";
 @import "title-section";
 @import "card-menu-section";
 @import "breadcrumb-section";
@@ -24,10 +25,9 @@
 @import "skills-section";
 @import "skill-section";
 @import "levels-section";
+@import "team-member-stats";
 
 //elements
-@import "sidebar";
-@import "panel-items";
 @import "form-embed";
 @import "points";
 
