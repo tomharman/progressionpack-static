@@ -1,58 +1,43 @@
-.team-member-sections {
-    @include simple-section;
-    @include md {
-        padding: 0;
-    }
-    @include lg {
-        display: grid;
-        grid-gap: 1rem;
-        grid-template-columns: 1fr 1fr 1fr;
-        padding: 0;
-    }
-}
 .team-member-section {
-    @include padded-card-section;
-    border-top: 0;
-    @include md {
-        margin: 0 0 1rem 0;
-        padding: 1rem;
-    }
-    &.team-member-section__panel--Human {
-        background-color: $color-human-light;
-        .panel__title {
-        color: $color-human-dark;
-        }
-    }
-    &.team-member-section__panel--Leader {
-        background-color: $color-leader-light;
-        .panel__title {
-        color: $color-leader-dark;
-        }
-    }
-    &.team-member-section__panel--Maker {
-        background-color: $color-maker-light;
-        .panel__title {
-        color: $color-maker-dark;
-        }
-    }
+    @include simple-section;
+    margin: 0 0 1rem 0;
+    padding: 1rem;
+
     .panel__title {
+        margin-top: 2rem;
         margin-bottom: 1rem;
     }
+    .panel__items {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(1, 1fr);
+        @include md {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include lg {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
     .panel__item {
+        border: 2px solid $color-grey-light;
         background-color: white;
         padding: 1rem;
         border-radius: 6px;
         margin-bottom: 0.5rem;
-        &:last-child {
-        margin-bottom: 0;
+        .panel-item__description {
+            margin-top: 0.3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            font-size: $text-size-small;
+            border-bottom: 1px solid $color-grey-light;
         }
     }
-    }
     .team-member-section__link-holder {
-    margin: 1rem 0;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid $color-grey-light;
-    .team-member-section__link {
-        color: $color-brand;
+        margin: 1rem 0;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid $color-grey-light;
+        .team-member-section__link {
+            color: $color-brand;
+        }
     }
 }

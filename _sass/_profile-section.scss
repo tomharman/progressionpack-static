@@ -1,8 +1,6 @@
 .team-member-profile-section {
     position: relative;
     padding-top: 1.5rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid $color-grey-light;
     z-index: 1;
     &::before {
         content: " ";
@@ -21,6 +19,11 @@
         grid-auto-rows: auto;
         grid-column-gap: 1rem;
         justify-items: center;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid $color-grey-light;
+        @include md {
+            padding-bottom: 2rem;
+        }
         .profile-section__avatar__holder {
             background-color: $color-brand-dark;
             width: 5rem;
