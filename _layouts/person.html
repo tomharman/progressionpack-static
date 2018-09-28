@@ -65,7 +65,7 @@ layout: base
 
     <!-- Get current skills as an array -->
     {% assign current_skills = "" | split: ',' %}
-    {% for current_skill in team_member.fields.self-assessment %}
+    {% for current_skill in team_member.fields.current-skills %}
       {% for skill in skills %}
         {% if current_skill == skill.id %}
           {% assign current_skills = current_skills | push: skill  %}
@@ -123,7 +123,7 @@ layout: base
         <div class="profile-section__meta">
           <div class="profile-section__role">
             <p>{{cl.fields.name}}</p>
-            <p><span>{% include icon/star.html class="brand" %}{{ team_member.fields.self-points }}</span> points</p>
+            <p><span>{% include icon/star.html class="brand" %}{{ team_member.fields.points }}</span> points</p>
           </div>
           <div class="profile-section__team">
             <p>{% if team_member.fields.manages != null %}Manages: {% for m in manages %}<a class="text--underline" href="/team/{{m.id}}">{{m.fields.name}}</a>{% endfor %}{% endif %}</p>
@@ -138,9 +138,9 @@ layout: base
 </div>
 
 <div class="team-member-stats">
-  <div class="team-member-stats__toggler">Your path to <a href="/levels/{{gl.id}}">{{gl.fields.name}}</a></div>
+  <div class="team-member-stats__toggler">{{team_member.fields.fname}}'s path to <a href="/levels/{{gl.id}}">{{gl.fields.name}}</a></div>
   <div class="team-member-stats__blurb">
-    <p class="team-member-stats__blurb__title">You’re <span>{{gl.fields.points | minus: team_member.fields.self-points }} points</span> and <span>{{missing_skills | size }} required skills</span> away from qualifying for this role.</p>
+    <p class="team-member-stats__blurb__title">You’re <span>{{gl.fields.points | minus: team_member.fields.points }} points</span> and <span>{{missing_skills | size }} required skills</span> away from qualifying for this role.</p>
     <p class="team-member-stats__blurb__disclaimer">Promotions are also dependent on managers discretion and business need</p>
   </div>
   <div class="team-member-stats__graphs">
@@ -162,7 +162,7 @@ layout: base
             {% assign skills_in_track = track_in_pillar.fields.skills %}
             {% for skill_in_track in skills_in_track %}
         
-            {% for current_skill in team_member.fields.self-assessment %}
+            {% for current_skill in team_member.fields.current-skills %}
             {% if current_skill == skill_in_track %}
 
             {% for skill in skills %}
@@ -201,15 +201,15 @@ layout: base
           <div class="points goal" style="width: {{ gl.fields.points | divided_by: 10 }}%;">
             <div class="name">{{gl.fields.name}}: {{ gl.fields.points }} points</div>
           </div>
-          <div class="points self" style="width: {{ team_member.fields.self-points | divided_by: 10 }}%">
-            <div class="name">Currently {{ team_member.fields.self-points }} points</div>
+          <div class="points self" style="width: {{ team_member.fields.points | divided_by: 10 }}%">
+            <div class="name">Currently {{ team_member.fields.points }} points</div>
           </div>
           <div class="points current" style="left: {{cl.fields.points | divided_by: 10}}%">
             <div class="name">{{cl.fields.name}}: {{ cl.fields.points }} points</div>
           </div>
         </div>
         <div class="graph--points__key">
-          <p>Currently: <span class="current">{% include icon/star.html class="brand" %}{{ team_member.fields.self-points }} points</span></p>
+          <p>Currently: <span class="current">{% include icon/star.html class="brand" %}{{ team_member.fields.points }} points</span></p>
           <p>{{gl.fields.name}}: <span class="goal">{% include icon/star.html class="warning" %}{{ gl.fields.points }} points</span></p>
         </div>
       </div>
@@ -236,7 +236,7 @@ layout: base
         {% endfor %}
       </div>
       {% for behaviour in skill_track.items %}
-      {% for achieved_skill in team_member.fields.self-assessment %}
+      {% for achieved_skill in team_member.fields.current-skills %}
       {% if achieved_skill == behaviour.id %}
       <div class="pillar-item__scale-holder">
         <div class="pillar-item__scale">

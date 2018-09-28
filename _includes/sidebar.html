@@ -23,16 +23,16 @@
         </div>
       </a>
     <div class="sidebar-section">
-        <h3 class="sidebar-section-title"><a href="/team">Team{% include icon/forwards.html class="brand" %}</a></h3>
+        <h3 class="sidebar-section-title"><a href="/team">Team{% include icon/forwards.html %}</a></h3>
         <ul class="sidebar-section__list">
             {% for team_member in team %}
-            <li class="sidebar-section__link {% if page.url contains team_member.id %}active{% endif %}"><a class="" href="../team/{{team_member.id}}">{{team_member.fields.name}}{% include icon/forwards.html class="brand" %}</a></li>
+            <li class="sidebar-section__link {% if page.url contains team_member.id %}active{% endif %}"><a class="" href="../team/{{team_member.id}}">{{team_member.fields.name}}{% include icon/forwards.html %}</a></li>
             {% endfor %}
         </ul>
     </div>
     {% endif %}
     <div class="sidebar-section">
-        <h3 class="sidebar-section-title"><a href="/levels">Seniority Levels{% include icon/forwards.html class="brand" %}</a></h3>
+        <h3 class="sidebar-section-title"><a href="/levels">Seniority Levels{% include icon/forwards.html %}</a></h3>
         <ul class="sidebar-section__list">
             {% assign grouped_levels = levels | group_by: "fields.type" %}
                 {% for level_type in grouped_levels %}
@@ -41,7 +41,7 @@
                     <ul>
                         {% assign levels_reversed = level_type.items | sort: "fields.points" %}
                         {% for level in levels_reversed %}
-                        <li class="sidebar-section__link {% if page.url contains level.id %}active{% endif %}"><a class="" href="../levels/{{level.id}}">{{level.fields.name}}{% include icon/forwards.html class="brand" %}</a></li>
+                        <li class="sidebar-section__link {% if page.url contains level.id %}active{% endif %}"><a class="" href="../levels/{{level.id}}">{{level.fields.name}}{% include icon/forwards.html %}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
@@ -49,11 +49,11 @@
         </ul>
     </div>
     <div class="sidebar-section">
-        <h3 class="sidebar-section-title"><a href="/skills">Skills{% include icon/forwards.html class="brand" %}</a></h3>
+        <h3 class="sidebar-section-title"><a href="/skills">Skills{% include icon/forwards.html %}</a></h3>
         <ul class="sidebar-section__list">
             {% assign site_skills = site.skills | sort: "order" %}
             {% for skill_pillar in site_skills %}
-            <li class="sidebar-section__link {% if page.url == skill_pillar.url %}active{% endif %}"><a class="" href="{{skill_pillar.url}}">{{skill_pillar.pillar_name}}{% include icon/forwards.html class="brand" %}</a></li>
+            <li class="sidebar-section__link {% if page.url == skill_pillar.url %}active{% endif %}"><a class="" href="{{skill_pillar.url}}">{{skill_pillar.pillar_name}}{% include icon/forwards.html %}</a></li>
             {% endfor %}
         </ul>
     </div>

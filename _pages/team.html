@@ -36,7 +36,7 @@ icon: person
       {% for level in levels %}
       {% if level.id == title[0] %}
       <p>{{level.fields.name}}</p>
-      {% if jekyll.environment == "production" %}<p class="grey">{{team_member.fields.self-points}} points</p>{% endif %}
+      {% if jekyll.environment == "production" %}<p class="grey">{{team_member.fields.points}} points</p>{% endif %}
       {% endif %}
       {% endfor %}
     </div>
