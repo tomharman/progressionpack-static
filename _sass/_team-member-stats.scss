@@ -53,25 +53,36 @@
             border: 1px solid $color-grey-light;
             box-shadow: $deep-shadow;
             padding: 1rem 1rem 0.5rem;
+            .graph-skills__key {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-column-gap: 0.5rem;
+                margin-bottom: 0.5rem;
+                .key__item {
+                    font-size: $text-size-small;
+                    color: $color-text-light;
+                    text-align: center;
+                }
+            }
             .graph {
                 border-radius: $border-radius;
                 min-height: 100px;
-                margin-bottom: 0.5rem;
+                margin-bottom: 0.2rem;
                 &.graph--skills {
                     display: grid;
                     grid-template-columns: 1fr 1fr 1fr;
                     grid-column-gap: 0.5rem;
                     .pillar {
                         display: grid;
-                        grid-gap: 0.1rem;
+                        grid-gap: 0.2rem;
                         .track {
                             background-color: $color-grey-light;
-                            border-radius: $border-radius/2;
+                            border-radius: $border-radius*4;
                             display: grid;
                             position: relative;
                             .score {
                                 background-color:$color-brand;
-                                border-radius: $border-radius/2;
+                                border-radius: $border-radius*4;
                             }
                             .name {
                                 position: absolute;
@@ -81,7 +92,7 @@
                                 box-shadow: $deep-shadow;
                                 padding: 0.3rem 0.5rem;
                                 z-index: 2;
-                                font-size: $text-size-small/1.4;
+                                font-size: $text-size-small;
                                 top: 1rem;
                                 left: 0.5rem;
                                 span {
@@ -96,16 +107,17 @@
                 }
                 &.graph--points {
                     display: grid;
-                    grid-template-rows: auto 20px auto;
+                    grid-template-rows: 1fr 1rem 1fr;
                     grid-template-areas:
-                        "top"
+                        "upper"
                         "scale"
-                        "bottom";
+                        "base";
+                    grid-row-gap: 0.2rem;
                     .points-holder {
                         grid-area: scale;
                         position: relative;
                         background-color: $color-grey-light;
-                        border-radius: $border-radius;
+                        border-radius: $border-radius*2;
                         display: grid;
                         .points {
                             position: absolute;
@@ -113,13 +125,16 @@
                             border-radius: $border-radius;
                             .name {
                                 background-color: white;
+                                position: absolute;
+                                visibility: hidden;
                                 border-radius: $border-radius/2;
                                 box-shadow: $deep-shadow;
                                 padding: 0.3rem 0.5rem;
                                 z-index: 2;
-                                font-size: $text-size-small/1.4;
+                                font-size: $text-size-small;
                                 max-width: 100px;
-                                display: relative;
+                                top: 1.5rem;
+                                right: 0;
                                 span {
                                     font-weight: 700;
                                 }
@@ -128,20 +143,46 @@
                                 background-color: $color-brand;
                                 .name {
                                     border: 2px solid $color-brand;
-                                    margin-top: -3rem;
                                 }
                             }
                             &.current {
                                 border-radius: 0;
+                                width: 5px;
                                 border-right: 2px dotted white;
-
+                                .name {
+                                    min-width: 100px;
+                                }
                             }
                             &.goal {
                                 background-color: $color-warning;
                                 .name {
                                     border: 2px solid $color-warning;
-                                    margin-top: 1.3rem;
-                                    margin-right: 0;
+                                }
+                            }
+                            &:hover .name {
+                                visibility: visible;
+                            }
+                        }
+                    }
+                    .graph--points__key {
+                        grid-area: base;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        p {
+                            color: $color-text-light;
+                            font-size: $text-size-small;
+                            span {
+                                display: flex;
+                                align-items: center;
+                                svg {
+                                    margin-left: 0.2rem;
+                                }
+                                &.current {
+                                    color: $color-brand;
+                                }
+                                &.goal {
+                                    color: $color-warning;
                                 }
                             }
                         }

@@ -68,13 +68,11 @@ layout: base
   <div class="team-member-stats__graphs">
     <div class="graph-holder">
       <div class="graph graph--skills">
-
         {% for pillar in sorted_pillars %}
         <div class="pillar">
-        {{pillar.items[0].fields.pillar}}
         
           {% for track_in_pillar in pillar.items %}
-            <div class="track" onClick="location.href='#'" aria-labelledby="{{track_in_pillar.fields.name}}">
+          <div class="track" onClick="location.href='#'" aria-labelledby="{{track_in_pillar.fields.name}}">
               <div class="name">{{track_in_pillar.fields.name}}</div>
             {% assign skills_in_track = track_in_pillar.fields.skills %}
             {% for skill_in_track in skills_in_track %}
@@ -104,21 +102,32 @@ layout: base
         {% endfor %}
 
       </div>
+      <div class="graph-skills__key">
+        {% for pillar in sorted_pillars %}
+        <div class="key__item">
+          {{pillar.items[0].fields.pillar}}
+        </div>
+        {%endfor%}
+      </div>
       <p class="title">Required Skills</p>
     </div>
     <div class="graph-holder">
       <div class="graph graph--points">
-        <!-- <p>Current points: {{ team_member.fields.self-points }}</p> -->
         <div class="points-holder">
-          <div class="points goal" style="width: 100%;">
+          <div class="points goal" style="width: {{ gl.fields.points | divided_by: 10 }}%;">
             <div class="name">{{gl.fields.name}}: {{ gl.fields.points }} points</div>
           </div>
           <div class="points self" style="width: {{ team_member.fields.self-points | divided_by: 10 }}%">
-              <div class="name">Current points: {{ team_member.fields.self-points }}</div>
-            </div>
-          <div class="points current" style="width: {{cl.fields.points | divided_by: 10}}%"></div>
+            <div class="name">Currently {{ team_member.fields.self-points }} points</div>
+          </div>
+          <div class="points current" style="left: {{cl.fields.points | divided_by: 10}}%">
+            <div class="name">{{cl.fields.name}}: {{ cl.fields.points }} points</div>
+          </div>
         </div>
-        <!-- <p>{{gl.fields.name}}: {{ gl.fields.points }} points</p> -->
+        <div class="graph--points__key">
+          <p>Currently: <span class="current">{% include icon/star.html class="brand" %}{{ team_member.fields.self-points }} points</span></p>
+          <p>{{gl.fields.name}}: <span class="goal">{% include icon/star.html class="warning" %}{{ gl.fields.points }} points</span></p>
+        </div>
       </div>
       <p class="title">Required Points</p>
     </div>
