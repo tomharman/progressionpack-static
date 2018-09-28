@@ -134,7 +134,7 @@ layout: base
         <div class="pillar">
         
           {% for track_in_pillar in pillar.items %}
-          <div class="track" onClick="location.href='#'" aria-labelledby="{{track_in_pillar.fields.name}}">
+          <div class="track" onClick="location.href='#{{track_in_pillar.fields.name}}'" aria-labelledby="{{track_in_pillar.fields.name}}">
             <div class="name">{{track_in_pillar.fields.name}}</div>
 
             {% for missing_skill in missing_skills %}
@@ -204,50 +204,60 @@ layout: base
 
 {% for track_type in skills_type %}
 <div class="team-member-section">
-  <h3 class="panel__title">{{track_type.name | remove: '["' | remove: '"]'}} skills</h3>
-  <ul class="panel__items">
+  <h3 class="pillar__title">{{track_type.name | remove: '["' | remove: '"]'}} skills</h3>
+  <div class="pillar__meta"></div>
+  <ul class="pillar__items">
     {% assign skill_tracks = track_type.items | group_by: "fields.track-name" %}
     {% for skill_track in skill_tracks %}
-    <li class="panel__item">
-      <h5 class="panel-item__heading">{{skill_track.name}}</h5>
-      <p class="panel-item__description">{{skill_track.items[0].fields.track-description}}</p>
+    <li class="pillar__item" id="{{skill_track.name}}">
+      <div class="pillar-item__info">
+        <h5 class="pillar-item__heading">{{skill_track.name}}</h5>
+        <p class="pillar-item__description">{{skill_track.items[0].fields.track-description}}</p>
+        {% for missing_skill in missing_skills %}
+        {% if skill_track.name == missing_skill %}
+        <div class="missing-notif"></div>
+        {% endif %}
+        {% endfor %}
+      </div>
       {% for behaviour in skill_track.items %}
       {% for achieved_skill in team_member.fields.self-assessment %}
       {% if achieved_skill == behaviour.id %}
-      <div class="panel-item__scale">
-        {% if behaviour.fields.level == "Training" %}
-        <div class="block block-filled"></div>
-        <div class="block"></div>
-        <div class="block"></div>
-        <div class="block"></div>
-        <div class="block"></div>
-        {% elsif behaviour.fields.level == "Competent" %}
-        <div class="block block-filled"></div>
-        <div class="block block-filled"></div>
-        <div class="block"></div>
-        <div class="block"></div>
-        <div class="block"></div>
-        {% elsif behaviour.fields.level == "Excelling" %}
-        <div class="block block-filled"></div>
-        <div class="block block-filled"></div>
-        <div class="block block-filled"></div>
-        <div class="block"></div>
-        <div class="block"></div>
-        {% elsif behaviour.fields.level == "Teaching" %}
-        <div class="block block-filled"></div>
-        <div class="block block-filled"></div>
-        <div class="block block-filled"></div>
-        <div class="block block-filled"></div>
-        <div class="block"></div>                          
-        {% elsif behaviour.fields.level == "Leading" %}
-        <div class="block block-filled"></div>
-        <div class="block block-filled"></div>
-        <div class="block block-filled"></div>
-        <div class="block block-filled"></div>
-        <div class="block block-filled"></div>   
-        {% endif %}
+      <div class="pillar-item__scale-holder">
+        <div class="pillar-item__scale">
+          {% if behaviour.fields.level == "Training" %}
+          <div class="block block-filled"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          {% elsif behaviour.fields.level == "Competent" %}
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          {% elsif behaviour.fields.level == "Excelling" %}
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          {% elsif behaviour.fields.level == "Teaching" %}
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block"></div>                          
+          {% elsif behaviour.fields.level == "Leading" %}
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>
+          <div class="block block-filled"></div>   
+          {% endif %}
+        </div>
+        <p class="pillar-item__scale-descriptor">{{behaviour.fields.level}} ({{behaviour.fields.points}} points)</p>
       </div>
-      <p class="panel-item__scale-descriptor">{{behaviour.fields.level}} ({{behaviour.fields.points}} points)</p>
       {% endif %}
       {% endfor %}
       {% endfor %}

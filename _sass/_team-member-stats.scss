@@ -76,6 +76,7 @@
                         display: grid;
                         grid-template-columns: repeat(8, 1fr); // Doesn't work if extra tracks are added.
                         .track {
+                            cursor: pointer;
                             background-color: $color-grey-light;
                             margin: 0 0.2rem;
                             border-radius: $border-radius*4;

@@ -3,11 +3,11 @@
     margin: 0 0 1rem 0;
     padding: 1rem;
 
-    .panel__title {
+    .pillar__title {
         margin-top: 2rem;
         margin-bottom: 1rem;
     }
-    .panel__items {
+    .pillar__items {
         display: grid;
         grid-gap: 1rem;
         grid-template-columns: repeat(1, 1fr);
@@ -18,18 +18,67 @@
             grid-template-columns: repeat(3, 1fr);
         }
     }
-    .panel__item {
+    .pillar__item {
         border: 2px solid $color-grey-light;
         background-color: white;
         padding: 1rem;
         border-radius: 6px;
         margin-bottom: 0.5rem;
-        .panel-item__description {
-            margin-top: 0.3rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            font-size: $text-size-small;
-            border-bottom: 1px solid $color-grey-light;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        .pillar-item__info {
+            position: relative;
+            .pillar-item__heading {
+            }
+            .pillar-item__description {
+                margin-top: 0.3rem;
+                margin-bottom: 1rem;
+                padding-bottom: 0.5rem;
+                font-size: $text-size-small;
+            }
+            .missing-notif {
+                height: 0.6rem;
+                width: 0.6rem;
+                border-radius: 100px;
+                background-color: $color-warning;
+                position: absolute;
+                top: 0.3rem;
+                right: 0.3rem;
+            }
+        }
+        .pillar-item__scale-holder {
+            border-top: 1px solid $color-grey-light;
+            .pillar-item__scale {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 0.5rem;
+                .block {
+                    width: 19%;
+                    height: 0.5rem;
+                    border-radius: 0.5rem;
+                    background-color: $color-grey-light;
+        
+                    &.block-filled {
+                        background-color: $color-brand;
+                    }
+                }
+            }
+            .pillar-item__scale-descriptor {
+                margin-top: 0.3rem;
+                color: $color-text-light;
+                font-size: 14px;
+            }
+        }
+        .pillar-item__avatar {
+            width: 80px;
+            padding-bottom: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 500px;
+            &.panel-item__avatar--small {
+                width: 40px;
+                padding-bottom: 40px;
+            }
         }
     }
     .team-member-section__link-holder {
