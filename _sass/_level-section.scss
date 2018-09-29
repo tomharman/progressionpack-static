@@ -1,5 +1,15 @@
 .level-section {
   @include padded-card-section;
+  border: 2px solid $color-grey-light;
+  &.level-Human {
+    border: 2px solid $color-human;
+  }
+  &.level-Maker {
+      border: 2px solid $color-maker;
+  }
+  &.level-Leader {
+      border: 2px solid $color-leader;
+  }
   .level-section__header { 
     display: flex;
     flex-direction: column;

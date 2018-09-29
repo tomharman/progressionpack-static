@@ -1,12 +1,38 @@
 .skill-header-section {
     .skill-header-section__content {
         @include padded-section;
+        .skill-header__title {
+            &.title-Human {
+                color: $color-human;
+            }
+            &.title-Maker {
+                color: $color-maker;
+            }
+            &.title-Leader {
+                color: $color-leader;
+            }
+        }
+        .skill-header__description {
+            font-size: $text-size-large;
+            @include md {
+                font-size: $text-size-xlarge;
+            }
+        }
     }
 }
 
 .skill-section {
     @include card-section;
     overflow: hidden;
+    &.skill-section-Human {
+        border: 2px solid $color-human;
+    }
+    &.skill-section-Maker {
+        border: 2px solid $color-maker;
+    }
+    &.skill-section-Leader {
+        border: 2px solid $color-leader;
+    }
     @include print {
         border: 1px solid black;
         // page-break-inside: avoid;
@@ -19,13 +45,13 @@
             padding: 2rem;
         }
         &.header-Human {
-            background-color: $color-human-light;
+            color: $color-human-dark;
         }
         &.header-Maker {
-            background-color: $color-maker-light;
+            color: $color-maker-dark;
         }
         &.header-Leader {
-            background-color: $color-leader-light;
+            color: $color-leader-dark;
         } 
         .skill-track__title {
         }

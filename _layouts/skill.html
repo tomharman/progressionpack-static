@@ -10,15 +10,8 @@ layout: base
 
 
 <div class="breadcrumb-section">
-        <div class="breadcrumb-section__content">
-            <a href="/skills" class="breadcrumb__content__link">{% include icon/back.html %} back to skills</a>
-        </div>
-    </div>
-
-<div class="skill-header-section section-{{page.pillar_name}} hide-print">
-    <div class="skill-header-section__content">
-        <h1>{{page.title}}</h1>
-        <p>{{page.description}}</p>
+    <div class="breadcrumb-section__content">
+        <a href="/skills" class="breadcrumb__content__link">{% include icon/back.html %} back to skills</a>
     </div>
 </div>
 
@@ -27,7 +20,15 @@ layout: base
 {% if skill_track.name contains page.pillar_name %}
 {% assign track_names = skill_track.items | group_by: "fields.track-name" %}
 {% for track in track_names %}
-<div class="skill-section">
+
+<div class="skill-header-section hide-print">
+    <div class="skill-header-section__content">
+        <h1 class="skill-header__title title-{{page.pillar_name}}">{{page.title}}</h1>
+        <p class="skill-header__description">{{page.description}}</p>
+    </div>
+</div>
+
+<div class="skill-section skill-section-{{page.pillar_name}}">
     <div class="skill-track__header header-{{page.pillar_name}}">
         <h3 class="skill-track__title">{{track.name}}</h3>
         <p class="skill-track__description">{{track.items[0].fields.track-description}}</p>

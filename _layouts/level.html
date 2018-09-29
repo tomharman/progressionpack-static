@@ -50,8 +50,8 @@ layout: base
 </div>
 {% assign skills_by_pillar = skills | group_by: "fields.pillar" | reverse %}
 {% for skill_pillar in skills_by_pillar %}
-<div class="level-section">
     {% assign pillar_name = skill_pillar.name | remove: '["' | remove: '"]' %}
+<div class="level-section level-{{pillar_name}}">
     <h3>{{pillar_name}}</h3>
     {% for skills_req in level.fields.skill-requirements %}
     {% assign skills_ordered = skill_pillar.items | sort: "fields.track-number" %}
