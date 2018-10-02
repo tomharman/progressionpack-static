@@ -6,6 +6,7 @@ title: Assess
 
 {% assign assess_link = site.data.information.records[0].fields.assessment-form %}
 
+{% assign tracks_n = site.data.tracks.records %}
 {% assign skills = site.data.skills.records %}
 {% assign skills_type = skills | group_by: "fields.pillar-number" %}
 {% assign sorted_pillars = skills_type | sort:"name" %}
@@ -37,25 +38,42 @@ title: Assess
                 
 
                 {% assign sorted_tracks = pillar.items | sort: "fields.track-number" %}
-                {% assign tracks = sorted_tracks | group_by: "fields.track-name" %}
+                {% assign skill_tracks = sorted_tracks | group_by: "fields.track-name" %}
                 
-                {% for track in tracks %}
+                {% for skill_track in skill_tracks %}
+
                 <div class="skill skill-{{pillar.items[0].fields.pillar}}" id="{{track.items[0].fields.track}}">
                     <div class="name-holder">
-                        <h4>{{ track.name }}</h4>
+                        <h4>{{ skill_track.name }}</h4>
                         <p><a href="#top">To top</a></p>
                     </div>
-                    {% assign track_items = track.items | sort: "fields.level-number" %}
+                    {% assign track_items = skill_track.items | sort: "fields.level-number" %}
                     {% for track_level in track_items %}
                     <div class="level">
                         <h5 class="level__title">{{track_level.fields.name}}</h5>
                         <p class="level__description">{{track_level.fields.description}}</p>
                         <p class="level__behaviours-title">Example behaviours</p>
                         <ul class="behaviours behaviours-{{pillar.items[0].fields.pillar}}">
-                            {% if track_level.fields.behaviour-1 %} <li class="behaviour">{{track_level.fields.behaviour-1}}</li>{% endif %}
-                            {% if track_level.fields.behaviour-2 %} <li class="behaviour">{{track_level.fields.behaviour-2}}</li>{% endif %}
-                            {% if track_level.fields.behaviour-3 %} <li class="behaviour">{{track_level.fields.behaviour-3}}</li>{% endif %}
-                            {% if track_level.fields.behaviour-4 %} <li class="behaviour">{{track_level.fields.behaviour-4}}</li>{% endif %}
+                            {% if track_level.fields.behaviour-1 %} 
+                            <li class="behaviour">
+                                {% for track_n in tracks_n %}{% if track_n.fields.name == track_level.fields.track-name %}<b>{{track_n.fields.behaviour-1-title}}: </b>{% endif %}{% endfor %}
+                                {{track_level.fields.behaviour-1}}
+                            </li>{% endif %}
+                            {% if track_level.fields.behaviour-2 %} 
+                            <li class="behaviour">
+                                {% for track_n in tracks_n %}{% if track_n.fields.name == track_level.fields.track-name %}<b>{{track_n.fields.behaviour-2-title}}: </b>{% endif %}{% endfor %}
+                                {{track_level.fields.behaviour-2}}
+                            </li>{% endif %}
+                            {% if track_level.fields.behaviour-3 %} 
+                            <li class="behaviour">
+                                {% for track_n in tracks_n %}{% if track_n.fields.name == track_level.fields.track-name %}<b>{{track_n.fields.behaviour-3-title}}: </b>{% endif %}{% endfor %}
+                                {{track_level.fields.behaviour-3}}
+                            </li>{% endif %}
+                            {% if track_level.fields.behaviour-4 %} 
+                            <li class="behaviour">
+                                {% for track_n in tracks_n %}{% if track_n.fields.name == track_level.fields.track-name %}<b>{{track_n.fields.behaviour-4-title}}: </b>{% endif %}{% endfor %}
+                                {{track_level.fields.behaviour-4}}
+                            </li>{% endif %}
                         </ul>
                     </div>
                     {% endfor%}
