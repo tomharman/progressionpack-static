@@ -5,6 +5,7 @@ layout: base
 {% assign instructions = site.data.instructions.records %}
 {% assign information = site.data.information.records %}
 {% assign skills = site.data.skills.records | sort: "fields.track-number" %}
+{% assign tracks_n = site.data.tracks.records | sort: "fields.track-number" %}
 {% assign levels = site.data.levels.records %}
 {% assign team = site.data.team.records %}
 
@@ -46,10 +47,38 @@ layout: base
                 </div>
             </div>
             <ul id="{{track_level.id}}" class="skill-track__reveal">
-                {% if track_level.fields.behaviour-1 %}<li class="behaviour-{{page.pillar_name}}"><p class="skill-track__reveal__item">{{track_level.fields.behaviour-1 }}</p></li>{% endif %}
-                {% if track_level.fields.behaviour-2 %}<li class="behaviour-{{page.pillar_name}}"><p class="skill-track__reveal__item">{{track_level.fields.behaviour-2 }}</p></li>{% endif %}
-                {% if track_level.fields.behaviour-3 %}<li class="behaviour-{{page.pillar_name}}"><p class="skill-track__reveal__item">{{track_level.fields.behaviour-3 }}</p></li>{% endif %}
-                {% if track_level.fields.behaviour-4 %}<li class="behaviour-{{page.pillar_name}}"><p class="skill-track__reveal__item">{{track_level.fields.behaviour-4 }}</p></li>{% endif %}
+                {% if track_level.fields.behaviour-1 %}
+                <li class="behaviour-{{page.pillar_name}}">
+                    <p class="skill-track__reveal__item">
+                        {% for track_n in tracks_n %}{% if track_n.fields.name == track_level.fields.track-name %}<b>{{track_n.fields.behaviour-1-title}}: </b>{% endif %}{% endfor %}
+                        {{track_level.fields.behaviour-1 }}
+                    </p>
+                </li>
+                {% endif %}
+                {% if track_level.fields.behaviour-2 %}
+                <li class="behaviour-{{page.pillar_name}}">
+                    <p class="skill-track__reveal__item">
+                        {% for track_n in tracks_n %}{% if track_n.fields.name == track_level.fields.track-name %}<b>{{track_n.fields.behaviour-2-title}}: </b>{% endif %}{% endfor %}
+                        {{track_level.fields.behaviour-2 }}
+                    </p>
+                </li>
+                {% endif %}
+                {% if track_level.fields.behaviour-3 %}
+                <li class="behaviour-{{page.pillar_name}}">
+                    <p class="skill-track__reveal__item">
+                        {% for track_n in tracks_n %}{% if track_n.fields.name == track_level.fields.track-name %}<b>{{track_n.fields.behaviour-3-title}}: </b>{% endif %}{% endfor %}
+                        {{track_level.fields.behaviour-3 }}
+                    </p>
+                </li>
+                {% endif %}
+                {% if track_level.fields.behaviour-4 %}
+                <li class="behaviour-{{page.pillar_name}}">
+                    <p class="skill-track__reveal__item">
+                        {% for track_n in tracks_n %}{% if track_n.fields.name == track_level.fields.track-name %}<b>{{track_n.fields.behaviour-4-title}}: </b>{% endif %}{% endfor %}
+                        {{track_level.fields.behaviour-4 }}
+                    </p>
+                </li>
+                {% endif %}
             </ul>
         </div>
         {% endfor %}
