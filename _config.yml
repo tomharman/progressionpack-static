@@ -10,6 +10,7 @@ exclude: ['bin', 'Makefile', 'README.md', 'Gemfile', 'Gemfile.lock']
 collections:
   skills:
     output: true
+    permalink: /:collection/:name
   team:
     output: true
   levels:

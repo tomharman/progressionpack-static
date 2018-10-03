@@ -5,6 +5,7 @@ layout: base
 {% assign instructions = site.data.instructions.records %}
 {% assign information = site.data.information.records %}
 {% assign skills = site.data.skills.records %}
+{% assign tracks_n = site.data.tracks.records %}
 {% assign levels = site.data.levels.records %}
 {% assign team = site.data.team.records %}
 
@@ -48,9 +49,10 @@ layout: base
 <div class="simple-section">
     <h2>Skills required</h2>
 </div>
-{% assign skills_by_pillar = skills | group_by: "fields.pillar" | reverse %}
+{% assign skills_sorted = skills | sort: "fields.track-number" %}
+{% assign skills_by_pillar = skills_sorted | group_by: "fields.pillar" %}
 {% for skill_pillar in skills_by_pillar %}
-    {% assign pillar_name = skill_pillar.name | remove: '["' | remove: '"]' %}
+{% assign pillar_name = skill_pillar.name | remove: '["' | remove: '"]' %}
 <div class="level-section level-{{pillar_name}}">
     <h3>{{pillar_name}}</h3>
     {% for skills_req in level.fields.skill-requirements %}
@@ -66,10 +68,38 @@ layout: base
             </div>
         </div>
         <ul id="{{skill.id}}" class="reveal level-group__reveal">
-            {% if skill.fields.behaviour-1 %}<li class="behaviour-{{pillar_name}}"><p class="content-group__reveal__item">{{skill.fields.behaviour-1 }}</p></li>{% endif %}
-            {% if skill.fields.behaviour-2 %}<li class="behaviour-{{pillar_name}}"><p class="content-group__reveal__item">{{skill.fields.behaviour-2 }}</p></li>{% endif %}
-            {% if skill.fields.behaviour-3 %}<li class="behaviour-{{pillar_name}}"><p class="content-group__reveal__item">{{skill.fields.behaviour-3 }}</p></li>{% endif %}
-            {% if skill.fields.behaviour-4 %}<li class="behaviour-{{pillar_name}}"><p class="content-group__reveal__item">{{skill.fields.behaviour-4 }}</p></li>{% endif %}
+            {% if skill.fields.behaviour-1 %}
+            <li class="behaviour-{{pillar_name}}">
+                <p class="content-group__reveal__item">
+                    {% for track_n in tracks_n %}{% if track_n.fields.name == skill.fields.track-name %}<b>{{track_n.fields.behaviour-1-title}}: </b>{% endif %}{% endfor %}
+                    {{skill.fields.behaviour-1 }}
+                </p>
+            </li>
+            {% endif %}
+            {% if skill.fields.behaviour-2 %}
+            <li class="behaviour-{{pillar_name}}">
+                <p class="content-group__reveal__item">
+                    {% for track_n in tracks_n %}{% if track_n.fields.name == skill.fields.track-name %}<b>{{track_n.fields.behaviour-2-title}}: </b>{% endif %}{% endfor %}
+                    {{skill.fields.behaviour-2 }}
+                </p>
+            </li>
+            {% endif %}
+            {% if skill.fields.behaviour-3 %}
+            <li class="behaviour-{{pillar_name}}">
+                <p class="content-group__reveal__item">
+                    {% for track_n in tracks_n %}{% if track_n.fields.name == skill.fields.track-name %}<b>{{track_n.fields.behaviour-3-title}}: </b>{% endif %}{% endfor %}
+                    {{skill.fields.behaviour-3 }}
+                </p>
+            </li>
+            {% endif %}
+            {% if skill.fields.behaviour-4 %}
+            <li class="behaviour-{{pillar_name}}">
+                <p class="content-group__reveal__item">
+                    {% for track_n in tracks_n %}{% if track_n.fields.name == skill.fields.track-name %}<b>{{track_n.fields.behaviour-4-title}}: </b>{% endif %}{% endfor %}
+                    {{skill.fields.behaviour-4 }}
+                </p>
+            </li>
+            {% endif %}
         </ul>
     </div>
     {% endif %}

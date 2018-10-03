@@ -41,8 +41,10 @@
                     flex-direction: column;
                     .skills-menu__link {
                         padding-bottom: 0.3rem;
-                        color: $color-text-light;
                         border-bottom: 1px solid $color-grey-light;
+                        a {
+                            color: $color-text-light;
+                        }
                     }
                 }
             }

@@ -15,18 +15,19 @@ layout: base
     </div>
 </div>
 
-{% assign skill_records = skills | group_by: "fields.pillar" | reverse %}
-{% for skill_track in skill_records %}
-{% if skill_track.name contains page.pillar_name %}
-{% assign track_names = skill_track.items | group_by: "fields.track-name" %}
-{% for track in track_names %}
-
 <div class="skill-header-section hide-print">
     <div class="skill-header-section__content">
         <h1 class="skill-header__title title-{{page.pillar_name}}">{{page.title}}</h1>
         <p class="skill-header__description">{{page.description}}</p>
     </div>
 </div>
+
+{% assign skill_records = skills | group_by: "fields.pillar" | reverse %}
+{% for skill_track in skill_records %}
+{% if skill_track.name contains page.pillar_name %}
+{% assign track_names = skill_track.items | group_by: "fields.track-name" %}
+{% for track in track_names %}
+
 
 <div class="skill-section skill-section-{{page.pillar_name}}">
     <div class="skill-track__header header-{{page.pillar_name}}">

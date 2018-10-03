@@ -41,17 +41,21 @@
     }
     .skill-track__header {
         padding: 1rem;
+        border-bottom: 2px solid $color-grey-light;
         @include md {
             padding: 2rem;
         }
         &.header-Human {
             color: $color-human-dark;
+            border-bottom: 2px solid $color-human;
         }
         &.header-Maker {
             color: $color-maker-dark;
+            border-bottom: 2px solid $color-maker;
         }
         &.header-Leader {
             color: $color-leader-dark;
+            border-bottom: 2px solid $color-leader;
         } 
         .skill-track__title {
         }
