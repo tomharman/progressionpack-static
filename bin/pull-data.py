@@ -20,6 +20,7 @@ TABLE_TO_FILENAME = {
         'Setup': 'information.json',
         'Tracks': 'tracks.json',
         'Skills': 'skills.json',
+        'Behaviours': 'behaviours.json',
         'Seniority Levels': 'levels.json',
         'Team': 'team.json',
         'Goals': 'goals.json',

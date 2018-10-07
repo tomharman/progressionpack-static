@@ -1,0 +1,50 @@
+---
+layout: base
+permalink: "/behaviours/"
+title: Behaviours
+description: Test behaviours page
+order: 1
+icon: map
+---
+
+{% assign tracks_data = site.data.tracks.records %}
+{% assign behaviours_data = site.data.behaviours.records %}
+{% assign information = site.data.information.records %}
+
+{% assign pillars = behaviours_data | sort: "fields.pillar-number" %}
+{% assign pillars_sorted = pillars | group_by: "fields.pillar-name" %}
+
+{% for pillar in pillars_sorted %}
+<div class="behaviour-header-section hide-print">
+    <div class="behaviour-header-section__content">
+        <h1 class="behaviour-header__title">{{pillar.name}}</h1>
+    </div>
+</div>
+{% assign tracks_sorted = pillar.items | sort: "fields.track-number" %}
+{% assign tracks = tracks_sorted | group_by: "fields.track-name" %}
+{% for track in tracks %}
+<div class="behaviour-section behaviour-section-{{track.items[0].fields.pillar-name}}">
+    <div class="behaviour-track__header">
+        <h3 class="behaviour-track__title">{{track.name}}</h3>
+    </div>
+    {% for track_item in track.items %}
+    <div class="behaviour-track__contents">
+        <h5 class="behaviour-track__category-title">{{track_item.fields.name}}</h5>
+        <ul class="behaviour-track__subcategories">
+            {% if track_item.fields.level-0 %}<li class="behaviour-subcategory"><p><b>{{information[0].fields.level-0-title}}: </b> {{track_item.fields.level-0}}</p></li>{% endif %}
+            {% if track_item.fields.level-1 %}<li class="behaviour-subcategory"><p><b>{{information[0].fields.level-1-title}}: </b> {{track_item.fields.level-1}}</p></li>{% endif %}
+            {% if track_item.fields.level-2 %}<li class="behaviour-subcategory"><p><b>{{information[0].fields.level-2-title}}: </b> {{track_item.fields.level-2}}</p></li>{% endif %}
+            {% if track_item.fields.level-3 %}<li class="behaviour-subcategory"><p><b>{{information[0].fields.level-3-title}}: </b> {{track_item.fields.level-3}}</p></li>{% endif %}
+            {% if track_item.fields.level-4 %}<li class="behaviour-subcategory"><p><b>{{information[0].fields.level-4-title}}: </b> {{track_item.fields.level-4}}</p></li>{% endif %}
+            {% if track_item.fields.level-5 %}<li class="behaviour-subcategory"><p><b>{{information[0].fields.level-5-title}}: </b> {{track_item.fields.level-5}}</p></li>{% endif %}
+        </ul>
+    </div>
+        <!-- {% for t in tracks_data %}
+        {% if t.id == track_item.fields.track-id[0] %}
+        <p class="skill-track__description">{{t.fields.number}}</p>
+        {% endif %}
+        {% endfor %} -->
+    {% endfor %}
+</div>
+{% endfor%}
+{% endfor %}
