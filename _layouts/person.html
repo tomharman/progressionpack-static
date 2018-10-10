@@ -226,7 +226,7 @@ layout: base
   <ul class="pillar__items">
     {% assign skill_tracks = track_type.items | group_by: "fields.track-name" %}
     {% for skill_track in skill_tracks %}
-    <li class="pillar__item" id="{{skill_track.name}}">
+    <li class="pillar__item" id="{{skill_track.name}}" onClick="window.location.href='/skills/{{track_type.items[0].fields.pillar}}#{{skill_track.items[0].fields.track-number}}'">
       <div class="pillar-item__info">
         <h5 class="pillar-item__heading">{{skill_track.name}}</h5>
         <p class="pillar-item__description">{{skill_track.items[0].fields.track-description}}</p>

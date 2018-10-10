@@ -28,7 +28,7 @@ layout: base
             {% if skill_track.name contains page.pillar_name %}
             {% assign track_names = skill_track.items | group_by: "fields.track-name" %}
             {% for track in track_names %}
-            <li class="skill-header__link"><a class="link-{{page.pillar_name}}" href="#{{track.items[0].id}}">{{track.name}}</a></li>
+            <li class="skill-header__link"><a class="link-{{page.pillar_name}}" href="#{{track.items[0].fields.track-number}}">{{track.name}}</a></li>
             {% endfor %}
             {% endif %}
             {% endfor %}
@@ -42,7 +42,7 @@ layout: base
 {% for track in track_names %}
 
 
-<div class="skill-section skill-section-{{page.pillar_name}}" id="{{track.items[0].id}}">
+<div class="skill-section skill-section-{{page.pillar_name}}" id="{{track.items[0].fields.track-number}}">
     <div class="skill-track__header header-{{page.pillar_name}}">
         <h3 class="skill-track__title">{{track.name}}</h3>
         <p class="skill-track__description">{{track.items[0].fields.track-description}}</p>

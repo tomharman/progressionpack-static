@@ -26,6 +26,12 @@
         margin-bottom: 0.5rem;
         display: grid;
         grid-template-rows: 1fr auto;
+        box-shadow: none;
+        transition: 0.1s all linear;
+        cursor: pointer;
+        &:hover {
+            box-shadow: $deep-shadow;
+        }
         .pillar-item__info {
             position: relative;
             .pillar-item__heading {
