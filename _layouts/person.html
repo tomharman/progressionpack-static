@@ -12,7 +12,8 @@ layout: base
 {% assign tracks_type = tracks | group_by: "fields.pillar-number" %}
 {% assign sorted_pillars = tracks_type | sort:"name" %}
 
-{% assign skills_type = skills | group_by: "fields.pillar" | reverse %}
+{% assign skills_type = skills | group_by: "fields.pillar-number" %}
+{% assign sorted_skills = skills_type | sort:"name" %}
 
 <div class="breadcrumb-section">
     <div class="breadcrumb-section__content">
@@ -218,9 +219,9 @@ layout: base
   </div>
 </div>
 
-{% for track_type in skills_type %}
+{% for track_type in sorted_skills %}
 <div class="team-member-section">
-  <h3 class="pillar__title">{{track_type.name | remove: '["' | remove: '"]'}} skills</h3>
+  <h3 class="pillar__title">{{track_type.items[0].fields.pillar}} skills</h3>
   <div class="pillar__meta"></div>
   <ul class="pillar__items">
     {% assign skill_tracks = track_type.items | group_by: "fields.track-name" %}

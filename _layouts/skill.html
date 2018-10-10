@@ -9,6 +9,9 @@ layout: base
 {% assign levels = site.data.levels.records %}
 {% assign team = site.data.team.records %}
 
+{% assign skill_records = skills | group_by: "fields.pillar" | reverse %}
+
+
 
 <div class="breadcrumb-section">
     <div class="breadcrumb-section__content">
@@ -20,17 +23,26 @@ layout: base
     <div class="skill-header-section__content">
         <h1 class="skill-header__title title-{{page.pillar_name}}">{{page.title}}</h1>
         <p class="skill-header__description">{{page.description}}</p>
+        <ul class="skill-header__links">
+            {% for skill_track in skill_records %}
+            {% if skill_track.name contains page.pillar_name %}
+            {% assign track_names = skill_track.items | group_by: "fields.track-name" %}
+            {% for track in track_names %}
+            <li class="skill-header__link"><a class="link-{{page.pillar_name}}" href="#{{track.items[0].id}}">{{track.name}}</a></li>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+        </ul>
     </div>
 </div>
 
-{% assign skill_records = skills | group_by: "fields.pillar" | reverse %}
 {% for skill_track in skill_records %}
 {% if skill_track.name contains page.pillar_name %}
 {% assign track_names = skill_track.items | group_by: "fields.track-name" %}
 {% for track in track_names %}
 
 
-<div class="skill-section skill-section-{{page.pillar_name}}">
+<div class="skill-section skill-section-{{page.pillar_name}}" id="{{track.items[0].id}}">
     <div class="skill-track__header header-{{page.pillar_name}}">
         <h3 class="skill-track__title">{{track.name}}</h3>
         <p class="skill-track__description">{{track.items[0].fields.track-description}}</p>

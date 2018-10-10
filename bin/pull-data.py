@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 
 from airtable import Airtable
 import json
@@ -6,7 +6,6 @@ import os
 import time
 import cmd
 
-#FIXME: Put these in environment variables instead of hardcoding.
 APP_ID = os.environ.get('APP_ID', None)
 APP_KEY = os.environ.get('APP_KEY', None)
 

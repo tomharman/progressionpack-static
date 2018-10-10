@@ -18,6 +18,27 @@
                 font-size: $text-size-xlarge;
             }
         }
+        .skill-header__links {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            .skill-header__link {
+                padding: 0.2rem 1rem 0.2rem 0;
+                a {
+                    text-decoration: underline;
+                    color: $color-text-light;
+                    &.link-Human {
+                        color: $color-human-dark;
+                    }
+                    &.link-Maker {
+                        color: $color-maker-dark;
+                    }
+                    &.link-Leader {
+                        color: $color-leader-dark;
+                    }
+                }
+            }
+        }
     }
 }
 
