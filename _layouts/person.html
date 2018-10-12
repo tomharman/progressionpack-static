@@ -84,17 +84,15 @@ layout: base
           {% for skill in track.fields.skills %}
             {% if gs.id == skill %}
               {% assign gs_score = gs.fields.level-number %}
-              <!-- <p style="color: red">{{gs.fields.name}} {{gs_score}}</p> -->
             {% endif %}
           {% endfor %}
         {% endfor %}
         
         {% assign cs_score = 0 %}
         {% for cs in current_skills %}
-        {% for skill in track.fields.skills %}
-        {% if cs.id == skill %}
+          {% for skill in track.fields.skills %}
+            {% if cs.id == skill %}
               {% assign cs_score = cs.fields.level-number %}
-              <!-- <p style="color: blue">{{cs_score}}</p> -->
             {% endif %}
           {% endfor %}
         {% endfor %}

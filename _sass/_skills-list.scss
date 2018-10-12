@@ -1,0 +1,124 @@
+.skills-menu {
+    margin: 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 1rem;
+    .skills-menu__pillar {
+        .skills-menu__header {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .skills-menu__links {
+            display: flex;
+            flex-direction: column;
+            .skills-menu__link {
+                padding-bottom: 0.3rem;
+                border-bottom: 1px solid $color-grey-light;
+                a {
+                    color: $color-text-light;
+                }
+            }
+        }
+    }
+}
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid $color-grey-light;
+    padding: 3rem 0;
+    .pillar {
+        margin-bottom: 3rem;
+        .pillar-name {
+            &.pillar-name-Human {
+                color: $color-human;
+            }
+            &.pillar-name-Maker {
+                color: $color-maker;
+            }
+            &.pillar-name-Leader {
+                color: $color-leader;
+            }
+        }
+        .skill {
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: $border-radius;
+            border: 2px solid $color-text-light;
+            &.skill-Human {
+                border: 2px solid $color-human;
+            }
+            &.skill-Maker {
+                border: 2px solid $color-maker;
+            }
+            &.skill-Leader {
+                border: 2px solid $color-leader;
+            }
+            .name-holder {
+                display: flex;
+                justify-content: space-between;
+                padding-bottom: 1rem;
+                border-bottom: 2px solid $color-grey-light;
+                &.skill-Human {
+                    border-bottom: 2px solid $color-human;
+                }
+                &.skill-Maker {
+                    border-bottom: 2px solid $color-maker;
+                }
+                &.skill-Leader {
+                    border-bottom: 2px solid $color-leader;
+                }
+                .name-holder__content {
+                    h4 {
+                        margin-bottom: 0.5rem;
+                    }
+                    p {
+                        font-size: $text-size-large;
+                        padding-right: 1rem;
+                    }
+                }
+                .name-holder__top-link {
+                    min-width: 50px;
+                    text-align: right;
+                }
+            }
+            .level {
+                padding: 1rem 0;
+                .level__title {
+                    margin-bottom: 0.5rem;
+                }
+                .level__description {
+                    font-size: $text-size-large;
+                }
+                .level__behaviours-title {
+                    padding-top: 1rem;
+                    opacity: 0.5;
+                    text-transform: uppercase;
+                    font-size: $text-size-small;
+                    font-weight: 700;
+                }
+                .behaviours {
+                    display: grid;
+                    @include xl {
+                        grid-template-columns: 1fr 1fr;
+                    }
+                    grid-gap: 0.5rem;
+                    .behaviour {
+                        padding: 0.5rem;
+                        font-size: $text-size;
+                        font-style: italic;
+                        border-radius: $border-radius;
+                    }
+                    &.behaviours-Human .behaviour {
+                        background-color: $color-human-light;
+                    }
+                    &.behaviours-Maker .behaviour {
+                        background-color: $color-maker-light;
+                    }
+                    &.behaviours-Leader .behaviour {
+                        background-color: $color-leader-light;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+This script is used in the Progression Pack Airtable base in the 'Assessments.assessed-levels' field.
+If you update the names of levels, or add new ones, you'll need to update this script.
+(Full documentation coming soon)
+
+IF({communication-level}, {communication-level} & ' at Communication, ') & 
+IF({empathy-level}, {empathy-level} & ' at Empathy, ') &
+IF({pragmatism-level}, {pragmatism-level} & ' at Pragmatism, ') &
+IF({humility-level}, {humility-level} & ' at Humility, ') &
+IF({initiative-level}, {initiative-level} & ' at Initiative, ') &
+IF({adaptability-level}, {adaptability-level} & ' at Adaptability, ') &
+IF({self-awareness-level}, {self-awareness-level} & ' at Self Awareness, ') &
+IF({attention-to-detail-level}, {attention-to-detail-level} & ' at Attention to Detail, ') &
+
+IF({user-focus-level}, {user-focus-level} & ' at User Focus, ') & 
+IF({systems-thinking-level}, {systems-thinking-level} & ' at Systems Thinking, ') &
+IF({using-data-level}, {using-data-level} & ' at Using Data, ') &
+IF({breaking-down-complexity-level}, {breaking-down-complexity-level} & ' at Breaking Down Complexity, ') &
+IF({process-level}, {process-level} & ' at Process, ') &
+IF({business-context-level}, {business-context-level} & ' at Business Context, ') &
+IF({visual-communication-level}, {visual-communication-level} & ' at Visual Communication, ') &
+IF({technical-understanding-level}, {technical-understanding-level} & ' at Technical Understanding, ') &
+
+IF({advocacy-level}, {advocacy-level} & ' at Advocacy, ') & 
+IF({culture-and-togetherness-level}, {culture-and-togetherness-level} & ' at Culture and Togetherness, ') &
+IF({stakeholder-management-level}, {stakeholder-management-level} & ' at Stakeholder Management, ') &
+IF({vision-level}, {vision-level} & ' at Vision, ') &
+IF({team-leadership-level}, {team-leadership-level} & ' at Team Leadership, ') &
+IF({hiring-and-org-design-level}, {hiring-and-org-design-level} & ' at Hiring and Org Design, ') &
+IF({giving-feedback-level}, {giving-feedback-level} & ' at Giving Feedback, ') &
+IF({developing-designers-level}, {developing-designers-level} & ' at Developing Designers, ')

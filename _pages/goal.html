@@ -6,6 +6,15 @@ title: Create a Goal
 
 {% assign goal_link = site.data.information.records[0].fields.goals-form %}
 
-<div class="form-embed">
-    <iframe class="airtable-embed" src="https://airtable.com/embed/{{goal_link}}?backgroundColor=green" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent;"></iframe>
+<div class="warning-banner">
+    <p>It looks like you're on a small screen. Assessments are much easier on a wide screen!</p>
+</div>
+<div class="form-holder">
+    <div class="form-info">
+    <h2 id="top">Skills Reference</h2>
+        {% include skills-list.html %}
+    </div>
+    <div class="form-embed">
+        <iframe class="airtable-embed" src="https://airtable.com/embed/{{goal_link}}?backgroundColor=green" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border-left: 2px solid #444;"></iframe>
+    </div>
 </div>
