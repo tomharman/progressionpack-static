@@ -43,15 +43,17 @@
             margin: 1rem 0;
             padding: 1rem;
             border-radius: $border-radius;
-            border: 2px solid $color-text-light;
             &.skill-Human {
                 border: 2px solid $color-human;
+                background-color: $color-human-light;
             }
             &.skill-Maker {
                 border: 2px solid $color-maker;
+                background-color: $color-maker-light;
             }
             &.skill-Leader {
                 border: 2px solid $color-leader;
+                background-color: $color-leader-light;
             }
             .name-holder {
                 display: flex;
@@ -82,9 +84,9 @@
                 }
             }
             .level {
-                padding: 1rem 0;
+                padding: 1rem 0 0.3rem;
                 .level__title {
-                    margin-bottom: 0.5rem;
+                    margin-bottom: 0.2rem;
                 }
                 .level__description {
                     font-size: $text-size-large;
@@ -103,20 +105,21 @@
                     }
                     grid-gap: 0.5rem;
                     .behaviour {
-                        padding: 0.5rem;
+                        padding: 1rem;
                         font-size: $text-size;
-                        font-style: italic;
                         border-radius: $border-radius;
+                        background-color: white;
+                        box-shadow: $deep-shadow;
                     }
-                    &.behaviours-Human .behaviour {
-                        background-color: $color-human-light;
-                    }
-                    &.behaviours-Maker .behaviour {
-                        background-color: $color-maker-light;
-                    }
-                    &.behaviours-Leader .behaviour {
-                        background-color: $color-leader-light;
-                    }
+                    // &.behaviours-Human .behaviour {
+                    //     background-color: $color-human-light;
+                    // }
+                    // &.behaviours-Maker .behaviour {
+                    //     background-color: $color-maker-light;
+                    // }
+                    // &.behaviours-Leader .behaviour {
+                    //     background-color: $color-leader-light;
+                    // }
                 }
             }
         }
