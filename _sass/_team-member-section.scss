@@ -42,15 +42,6 @@
                 padding-bottom: 0.5rem;
                 font-size: $text-size-small;
             }
-            .missing-notif {
-                height: 0.6rem;
-                width: 0.6rem;
-                border-radius: 100px;
-                background-color: $color-warning;
-                position: absolute;
-                top: 0.3rem;
-                right: 0.3rem;
-            }
         }
         .pillar-item__scale-holder {
             border-top: 1px solid $color-grey-light;
@@ -74,8 +65,11 @@
             }
             .pillar-item__scale-descriptor {
                 margin-top: 0.3rem;
-                color: $color-text-light;
-                font-size: 14px;
+                color: $color-text;
+                font-size: $text-size-small;
+                .missing-notif {
+                    color: $color-warning;
+                }
             }
         }
         .pillar-item__avatar {
