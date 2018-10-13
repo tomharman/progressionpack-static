@@ -8,6 +8,7 @@ layout: base
 {% assign skills = site.data.skills.records %}
 {% assign levels = site.data.levels.records %}
 {% assign team = site.data.team.records %}
+{% assign assessments_data = site.data.assessments.records %}
 
 {% assign tracks_type = tracks | group_by: "fields.pillar-number" %}
 {% assign sorted_pillars = tracks_type | sort:"name" %}
@@ -56,7 +57,6 @@ layout: base
       {% endfor %}
     {% endfor %}
 
-
     <!-- Get current level id -->
     {% for level in levels %}
       {% if level.id == current_level[0] %}
@@ -104,6 +104,13 @@ layout: base
         {% endif %}
 
 
+        {% assign my_assessments = "" | split: ',' %}
+        {% for assessment in assessments_data %}
+          {% if assessment.fields.team-member[0] == team_member.id %}
+            {% assign my_assessments = my_assessments | push: assessment %}
+          {% endif %}
+        {% endfor %}
+
       {% endfor %}
 
     {% endfor %}
@@ -129,9 +136,33 @@ layout: base
           </div>
         </div>
       </div>
+      <div class="profile-section__assessments">
+        <h5 class="assessments_header">Assessments</h5>
+        <p class="assessments_description">View details in your 'Assessments' table.</p>
+        <div class="assessments">
+            {% if my_assessments.size != 0 %}
+            {% for my_assessment in my_assessments %}
+            <div class="assessment">
+              {{ my_assessment.fields.date | date: "%b %d, %Y" }}
+              {% if my_assessment.fields.is-self-assessed %}
+              (Self-assessment)
+              {%else%}
+              {% for team_member in team %}
+              {%if team_member.id == my_assessment.fields.assessed-by[0] %}
+              ({{team_member.fields.name}})
+              {% endif %}
+              {% endfor %}
+              {% endif %}
+            </div>
+            {% endfor %}
+          {% else %}
+            <p class="assessments_empty-state">No assessments yet</p>
+          {% endif %}
+        </div>
+      </div>
       <div class="profile-section__cta">
-        <a href="{{site.url}}/assess" class="text--underline">Start assessment</a><br>
-        <a href="{{site.url}}/goal" class="text--underline">Create goal</a>
+        <p><a href="{{site.url}}/assess" class="btn">Start assessment</a></p>
+        <p><a href="{{site.url}}/goal" class="btn">Create goal</a></p>
       </div>
     </div>
 </div>
@@ -228,11 +259,6 @@ layout: base
       <div class="pillar-item__info">
         <h5 class="pillar-item__heading">{{skill_track.name}}</h5>
         <p class="pillar-item__description">{{skill_track.items[0].fields.track-description}}</p>
-        {% for missing_skill in missing_skills %}
-        {% if skill_track.name == missing_skill %}
-        <div class="missing-notif"></div>
-        {% endif %}
-        {% endfor %}
       </div>
       {% for behaviour in skill_track.items %}
       {% for achieved_skill in team_member.fields.current-skills %}
@@ -271,7 +297,14 @@ layout: base
           <div class="block block-5 block-filled"></div>   
           {% endif %}
         </div>
-        <p class="pillar-item__scale-descriptor">{{behaviour.fields.level}} ({{behaviour.fields.points}} points)</p>
+        <div class="pillar-item__scale-descriptor">
+          <b>{{behaviour.fields.level}} </b>({{behaviour.fields.points}} points)
+          {% for missing_skill in missing_skills %}
+          {% if skill_track.name == missing_skill %}
+          <span class="missing-notif">Skill required</span>
+          {% endif %}
+          {% endfor %}
+        </div>
       </div>
       {% endif %}
       {% endfor %}

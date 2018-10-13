@@ -71,6 +71,37 @@
                 }
             }
         }
+        .profile-section__assessments {
+            width: 100%;
+            border-top: 1px solid $color-grey-light;
+            padding: 1rem 0;
+            text-align: center;
+            .assessments_header {
+                color: $color-text;
+                font-size: $text-size;
+            }
+            .assessments_description {
+                color: $color-text-light;
+                font-size: $text-size-small;
+            }
+            .assessments {
+                margin: 0.2rem 0;
+                display: flex;
+                justify-content: center;
+                .assessment {
+                    padding: 0.3rem 0.5rem;
+                    border-radius: $border-radius/4;
+                    background-color: $color-grey-light;
+                    color: $color-text;
+                    font-size: $text-size-small;
+                    margin: 0.3rem;
+                }
+            }
+            .assessments_empty-state {
+                color: $color-text-light;
+                padding: 0.5rem 0;
+            }
+        }
         .profile-section__cta {
             text-align: center;
             a {
