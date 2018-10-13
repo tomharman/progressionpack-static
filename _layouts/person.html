@@ -104,6 +104,13 @@ layout: base
         {% endif %}
 
 
+        {% assign my_assessments = "" | split: ',' %}
+        {% for assessment in assessments_data %}
+          {% if assessment.fields.team-member[0] == team_member.id %}
+            {% assign my_assessments = my_assessments | push: assessment %}
+          {% endif %}
+        {% endfor %}
+
       {% endfor %}
 
     {% endfor %}
@@ -133,22 +140,24 @@ layout: base
         <h5 class="assessments_header">Assessments</h5>
         <p class="assessments_description">View details in your 'Assessments' table.</p>
         <div class="assessments">
-          {% for assessment in assessments_data %}
-          {% if assessment.fields.team-member[0] == team_member.id %}
-          <div class="assessment">
-            {{ assessment.fields.date | date: "%b %d, %Y" }}
-            {% if assessment.fields.is-self-assessed %}
-            (Self-assessment)
-            {%else%}
-            {% for team_member in team %}
-            {%if team_member.id == assessment.fields.assessed-by[0] %}
-            ({{team_member.fields.name}})
-            {% endif %}
+            {% if my_assessments.size != 0 %}
+            {% for my_assessment in my_assessments %}
+            <div class="assessment">
+              {{ my_assessment.fields.date | date: "%b %d, %Y" }}
+              {% if my_assessment.fields.is-self-assessed %}
+              (Self-assessment)
+              {%else%}
+              {% for team_member in team %}
+              {%if team_member.id == my_assessment.fields.assessed-by[0] %}
+              ({{team_member.fields.name}})
+              {% endif %}
+              {% endfor %}
+              {% endif %}
+            </div>
             {% endfor %}
-            {% endif %}
-          </div>
+          {% else %}
+            <p class="assessments_empty-state">No assessments yet</p>
           {% endif %}
-          {% endfor %}
         </div>
       </div>
       <div class="profile-section__cta">

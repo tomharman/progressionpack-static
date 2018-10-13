@@ -97,6 +97,10 @@
                     margin: 0.3rem;
                 }
             }
+            .assessments_empty-state {
+                color: $color-text-light;
+                padding: 0.5rem 0;
+            }
         }
         .profile-section__cta {
             text-align: center;
