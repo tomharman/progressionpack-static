@@ -24,16 +24,19 @@ These can be found by doing the following:
 _Important: Keep these safe and private, but close to hand. Anyone with these can view and modify your data. You can also create a second Airtable user with read-only access and use their APP_KEY if you want to be extra safe._
 
 
-### 2. Hit this link: [Deploy to Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/jonnyburch/progressionpack-static) 
+### 2. Fork the repository and add to Netlify.
 
-Follow the instructions on Netlify to create a new repository in your Github account and deploy your first version.
+First click the 'Fork' button on this repository in Github to create your own version of it.
 
-<a href="https://app.netlify.com/start/deploy?repository=https://github.com/jonnyburch/progressionpack-static">
-  <img src="https://www.netlify.com/img/deploy/button.svg" title="Deploy to Netlify">
-</a>
+Then head to <a href="https://netlify.com">Netlify</a>. Follow the instructions on Netlify to create a new repository in your Github account and deploy your first version.
 
 1. You'll connect your Github account
-2. Netlify will ask you to name your repository, and enter the details you found in the previous step.
+2. Netlify will ask you to name your repository. Click 'advanced options' to enter the details you found in the previous step.
+
+```
+APP_ID: [Your Airtable base ID]
+APP_KEY: [Your Airtable api key]
+```
 
 When you've completed this step, your deploy should begin! The domain name will be random, but you can update to your own when you see fit.
 
