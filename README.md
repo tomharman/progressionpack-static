@@ -31,7 +31,7 @@ First click the 'Fork' button on this repository in Github to create your own ve
 Then head to <a href="https://netlify.com">Netlify</a>. Follow the instructions on Netlify to create a new repository in your Github account and deploy your first version.
 
 1. You'll connect your Github account
-2. Netlify will ask you to name your repository. Click 'advanced options' to enter the details you found in the previous step.
+2. Netlify will ask you to name your repository. Click 'advanced options' to enter the details you found in the previous step into two 'Environment Variables'.
 
 ```
 APP_ID: [Your Airtable base ID]
