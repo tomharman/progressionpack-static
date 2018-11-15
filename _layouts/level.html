@@ -31,18 +31,24 @@ layout: base
                     <li class="points-list__item Leader">{% include icon/star.html class="Leader" %}{{level.fields.leader-points}}</li>
                 </ul>
             </div>
+            {% if jekyll.environment == "production" %}
             <div class="level-section__header__team">
-                {% if level.fields.people != null %}<p>Team members:</p>{% else %}<p>No team members at this level</p>{% endif %}
-                {% for person in level.fields.people %}
-                {% for team_member in team %}
-                {% if team_member.id == person %}
-                <a class="panel__item" href="../team/{{team_member.id}}">
-                    <div class="panel-item__avatar panel-item__avatar--small" style="background-image: url('{{ team_member.fields.photo[0].url }}')"></div>
-                </a>
+                {% if level.fields.people %}
+                    <p>Team members:</p>
+                    {% for person in level.fields.people %}
+                        {% for team_member in team %}
+                            {% if team_member.id == person %}
+                            <a class="panel__item" href="../team/{{team_member.id}}">
+                                <div class="panel-item__avatar panel-item__avatar--small" style="background-image: url('{{ team_member.fields.photo[0].thumbnails.small.url }}')"></div>
+                            </a>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <p>No team members at this level</p>
                 {% endif %}
-                {% endfor %}
-                {% endfor %}
             </div>
+            {% endif %}
         </div>
     </div>
 </div>

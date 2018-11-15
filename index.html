@@ -45,6 +45,7 @@ title: Home
             </div>
         </a>
     </div>
+    {% if jekyll.environment == "production" %}
     <div class="card-menu-section__card">
         <a href="/team">
             <div class="card__avatar">
@@ -60,4 +61,5 @@ title: Home
             </div>
         </a>
     </div>
+    {% endif %}
 </div>

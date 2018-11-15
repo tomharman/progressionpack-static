@@ -93,3 +93,15 @@
         }
     }
 }
+
+.panel-item__avatar {
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 500px;
+    &.panel-item__avatar--small {
+        width: 30px;
+        height: 30px;
+    }
+}
