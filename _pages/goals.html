@@ -22,14 +22,25 @@ description: The goals set by your team
     {% else %}
     {% for goal in site.goals %}
         <div class="goal">
-        <h3 class="goal-name">{{goal.title}}</h3>
-        <div class="goal-progress">{{goal_r.fields.progress}}</div>
-        {% for goal_r in goals_r %}
+            {% for goal_r in goals_r %}
             {% if goal_r.id == goal.goal_id %}
+            <div class="goal-progress"><span>{{goal_r.fields.progress}}</span></div>
+                <h4 class="goal-name">{{goal.title}}</h4>
                 {% for person in team_r %}
                     {% if goal_r.fields.person[0] == person.id %}
-                        <a href="/team/{{person.id}}"><img src="{{person.fields.photo[0].thumbnails.small.url}}" alt="{{person.fields.name}}"></a>
-                        <p>{{person.fields.name}}</p>
+                        <a class="goal-owner" href="/team/{{person.id}}">
+                            <div class="goal-owner__avatar" style="background-image: url('{{person.fields.photo[0].thumbnails.small.url}}')"></div>
+                            <p>{{person.fields.name}}</p>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+                <p class="goal-done-when"><b>Done when:</b> {{goal_r.fields.done-when}}</p>
+                {% for person in team_r %}
+                    {% if goal_r.fields.who-can-help[0] == person.id %}
+                    <a class="goal-helper" href="/team/{{person.id}}">
+                        <p><b>Helped by:</b> {{person.fields.name}}</p>
+                        <p><i>{{goal_r.fields.how-can-they-help}}</i></p>
+                    </a>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -42,4 +53,4 @@ description: The goals set by your team
     <div class="info-section">
         <p>Team Safe mode enabled: individual goals not visible to the team. Please go to your profile to view your goals.</p>
     </div>
-{% endif %}
+{% endif %} 
