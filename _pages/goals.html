@@ -1,0 +1,17 @@
+---
+layout: base
+permalink: "/goals/"
+title: Goals
+description: The goals set by your team
+---
+
+{% assign goals_r = site.data.goals.records %}
+
+{% for goal in site.goals %}
+    {{goal.title}}
+    {% for goal_r in goals_r %}
+        {% if goal_r.id == goal.id %}
+            {{goal_r.id}}
+        {% endif %}
+    {% endfor %}
+{% endfor %}

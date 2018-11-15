@@ -15,6 +15,9 @@ pp:
 	@echo "$(BOLD)Creating seniority levels...$(RESET)"
 	@python3 ./bin/create-levels.py
 	@echo "--------------------------------------------------------"
+	@echo "$(BOLD)Creating goals...$(RESET)"
+	@python3 ./bin/create-goals.py
+	@echo "--------------------------------------------------------"
 	@echo "Progression Pack is ready to roll."
 	@echo "--------------------------------------------------------"
 

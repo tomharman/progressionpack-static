@@ -8,5 +8,6 @@ _site
 _data/*
 _team/*
 _levels/*
+_goals/*
 # Exceptions for readme files
 !*/readme.md

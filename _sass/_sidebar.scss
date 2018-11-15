@@ -42,9 +42,10 @@
         }
         .sidebar-section {
             border-bottom: 1px solid darken($sidebar-text-color, 70%);
+            padding: 1rem 0;
         }
         .sidebar-section-title {
-            padding: 1rem 1rem 0.5rem;
+            padding: 0 1rem;
             font-size: $text-size-large;
             a {
                 color: $sidebar-text-color;
@@ -59,7 +60,7 @@
             }
         }
         .sidebar-section__list {
-            padding-bottom: 1rem;
+            padding-top: 0.5rem;
             .sidebar-section__link {
                 padding: 0.2rem 1rem;
                 a {
