@@ -1,0 +1,25 @@
+.goals-section {
+    @include padded-section;
+    .goals_empty {
+        text-align: center;
+        margin: 0 auto;
+    }
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .goal {
+        padding: 1rem;
+        display: grid;
+        grid-template-rows: auto auto;
+        border-radius: $border-radius;
+        background-color: white;
+        overflow: hidden;
+        box-shadow: $deep-shadow;
+        .goal-name {
+
+        }
+    }
+}

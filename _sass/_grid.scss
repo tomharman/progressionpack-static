@@ -36,7 +36,13 @@ header {
 .content {
     grid-area: content;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     @include print {
         grid-area: unset;
+    }
+    .content-holder {
+        flex: 1; 
     }
 }

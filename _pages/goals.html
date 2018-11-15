@@ -6,12 +6,40 @@ description: The goals set by your team
 ---
 
 {% assign goals_r = site.data.goals.records %}
+{% assign team_r = site.data.team.records %}
 
-{% for goal in site.goals %}
-    {{goal.title}}
-    {% for goal_r in goals_r %}
-        {% if goal_r.id == goal.id %}
-            {{goal_r.id}}
-        {% endif %}
+<div class="title-section">
+    <div class="title-section__content">
+        {% include icon/star.html class="white large" %}
+        <h1 class="title-section__title">{{page.title}}</h1>
+        <p class="title-section__text">{{page.description}}</p>
+    </div>
+</div>
+{% if jekyll.environment == "production" %}
+<div class="goals-section">
+    {% if site.goals.size == 0 %}
+        <p class="goals_empty">No goals yet! <a href="/goal">Create a goal</a></p>
+    {% else %}
+    {% for goal in site.goals %}
+        <div class="goal">
+        <h3 class="goal-name">{{goal.title}}</h3>
+        <div class="goal-progress">{{goal_r.fields.progress}}</div>
+        {% for goal_r in goals_r %}
+            {% if goal_r.id == goal.goal_id %}
+                {% for person in team_r %}
+                    {% if goal_r.fields.person[0] == person.id %}
+                        <a href="/team/{{person.id}}"><img src="{{person.fields.photo[0].thumbnails.small.url}}" alt="{{person.fields.name}}"></a>
+                        <p>{{person.fields.name}}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        </div>
     {% endfor %}
-{% endfor %}
+    {% endif %}
+</div>
+{% else %}
+    <div class="info-section">
+        <p>Team Safe mode enabled: individual goals not visible to the team. Please go to your profile to view your goals.</p>
+    </div>
+{% endif %}
