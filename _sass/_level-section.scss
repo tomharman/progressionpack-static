@@ -10,6 +10,11 @@
   &.level-Leader {
       border: 2px solid $color-leader;
   }
+  @include print {
+    border: 1px solid black;
+    page-break-inside: avoid;
+    max-width: 100vw;
+  }
   .level-section__header { 
     display: flex;
     flex-direction: column;
@@ -51,6 +56,10 @@
       display: flex;
       flex-direction: column;
       padding-bottom: 1rem;
+      @include print {
+        flex-direction: row;
+        justify-content: space-between;
+      }
       .level-section__group__description {
         line-height: 1.4;
         flex: 1;
@@ -62,6 +71,9 @@
         }
         @include lg {
           font-size: $text-size-xlarge;
+        }
+        @include print {
+          max-width: $screen-xl-min;
         }
       }
       .level-section__group__meta {
@@ -76,6 +88,9 @@
         .level-group__reveal-button {
           color: $color-text-light;
           margin-left: 1rem;
+          @include print {
+            display: none;
+          }
         }
       }
     }
@@ -107,6 +122,15 @@
           &.behaviour-Leader {
             background-color: $color-leader-light;
           }
+        }
+      }
+      @include print {
+        height: auto;
+        font-size: 5pt !important;
+        li {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            border-radius: $border-radius;
         }
       }
     }

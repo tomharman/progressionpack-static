@@ -1,0 +1,56 @@
+---
+layout: base
+permalink: "/goals/"
+title: Goals
+description: The goals set by your team
+---
+
+{% assign goals_r = site.data.goals.records %}
+{% assign team_r = site.data.team.records %}
+
+<div class="title-section">
+    <div class="title-section__content">
+        {% include icon/star.html class="white large" %}
+        <h1 class="title-section__title">{{page.title}}</h1>
+        <p class="title-section__text">{{page.description}}</p>
+    </div>
+</div>
+{% if jekyll.environment == "production" %}
+<div class="goals-section">
+    {% if site.goals.size == 0 %}
+        <p class="goals_empty">No goals yet! <a href="/goal">Create a goal</a></p>
+    {% else %}
+    {% for goal in site.goals %}
+        <div class="goal">
+            {% for goal_r in goals_r %}
+            {% if goal_r.id == goal.goal_id %}
+            <div class="goal-progress"><span>{{goal_r.fields.progress}}</span></div>
+                <h4 class="goal-name">{{goal.title}}</h4>
+                {% for person in team_r %}
+                    {% if goal_r.fields.person[0] == person.id %}
+                        <a class="goal-owner" href="/team/{{person.id}}">
+                            <div class="goal-owner__avatar" style="background-image: url('{{person.fields.photo[0].thumbnails.small.url}}')"></div>
+                            <p>{{person.fields.name}}</p>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+                <p class="goal-done-when"><b>Done when:</b> {{goal_r.fields.done-when}}</p>
+                {% for person in team_r %}
+                    {% if goal_r.fields.who-can-help[0] == person.id %}
+                    <a class="goal-helper" href="/team/{{person.id}}">
+                        <p><b>Helped by:</b> {{person.fields.name}}</p>
+                        <p><i>{{goal_r.fields.how-can-they-help}}</i></p>
+                    </a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% else %}
+    <div class="info-section">
+        <p>Team Safe mode enabled: individual goals not visible to the team. Please go to your profile to view your goals.</p>
+    </div>
+{% endif %} 

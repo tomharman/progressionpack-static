@@ -20,6 +20,12 @@ icon: person
         <p class="title-section__text">{{page.description}}</p>
     </div>
 </div>
+{% if jekyll.environment != "production" %}
+<div class="info-section">
+    <p>Team Safe mode enabled: please ask your manager for the link to your profile.</p>
+</div>
+{% endif %}
+
 <div class="team-section">
   {% for team_member in team %}
   {% if jekyll.environment == "production" %}
@@ -36,7 +42,11 @@ icon: person
       {% for level in levels %}
       {% if level.id == title[0] %}
       <p>{{level.fields.name}}</p>
-      {% if jekyll.environment == "production" %}<p class="grey">{{team_member.fields.points}} points</p>{% endif %}
+      {% if jekyll.environment == "production" %}
+        <p class="grey">{{team_member.fields.points}} points</p>
+      {% else %}
+        <p class="grey">Profile locked (Team Safe mode)</p>
+      {% endif %}
       {% endif %}
       {% endfor %}
     </div>

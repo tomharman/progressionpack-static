@@ -1,0 +1,56 @@
+.goals-section {
+    @include padded-section;
+    .goals_empty {
+        text-align: center;
+        margin: 0 auto;
+    }
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .goal {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        border-radius: $border-radius;
+        background-color: white;
+        overflow: hidden;
+        box-shadow: $deep-shadow;
+        .goal-progress {
+            align-self: flex-start;
+            margin-bottom: 0.5rem;
+            span {
+                font-size: $text-size-small;
+                padding: 0.2rem 0.4rem;
+                background-color: $color-grey-light;
+                border-radius: 2px;
+            }
+        }
+        .goal-name {
+            margin-bottom: 0.5rem;
+        }
+        .goal-owner {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            .goal-owner__avatar {
+                border-radius: 100px;
+                width: 30px;
+                padding-bottom: 30px;
+                background-size: cover;
+                margin-right: 0.3rem;
+            }
+        }
+        .goal-done-when {
+            padding: 0.5rem 0;
+            border-top: 1px solid $color-grey-light;
+        }
+        .goal-helper {
+            i {
+                opacity: 0.7;
+            }
+        }
+    }
+}

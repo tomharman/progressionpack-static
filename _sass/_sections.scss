@@ -61,6 +61,12 @@
     @include padded-card-section;
 }
 
+.info-section {
+    @include padded-section;
+    border-top: none;
+    background-color: $color-warning;
+}
+
 .section-Human {
     background-color: $color-human;
     * {color: white;}
