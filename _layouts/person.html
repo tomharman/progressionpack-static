@@ -228,13 +228,13 @@ layout: base
     <div class="graph-holder">
       <div class="graph graph--points">
         <div class="points-holder">
-          <div class="points goal" style="width: {{ gl.fields.points | divided_by: 10 }}%;">
+          <div class="points goal" style="width: {{ gl.fields.points | divided_by: 15 }}%;">
             <div class="name">{{gl.fields.name}}: {{ gl.fields.points }} points</div>
           </div>
-          <div class="points self" style="width: {{ team_member.fields.points | divided_by: 10 }}%">
+          <div class="points self" style="width: {{ team_member.fields.points | divided_by: 15 }}%">
             <div class="name">Currently {{ team_member.fields.points }} points</div>
           </div>
-          <div class="points current" style="left: {{cl.fields.points | divided_by: 10}}%">
+          <div class="points current" style="left: {{cl.fields.points | divided_by: 15 }}%">
             <div class="name">{{cl.fields.name}}: {{ cl.fields.points }} points</div>
           </div>
         </div>
