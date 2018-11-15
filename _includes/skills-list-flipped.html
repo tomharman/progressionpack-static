@@ -1,0 +1,101 @@
+{% assign assess_link = site.data.information.records[0].fields.assessment-form %}
+
+{% assign tracks_n = site.data.tracks.records %}
+{% assign skills = site.data.skills.records %}
+{% assign skills_type = skills | group_by: "fields.pillar-number" %}
+{% assign sorted_pillars = skills_type | sort:"name" %}
+
+<div class="skills-menu">
+    {% for pillar in sorted_pillars %}
+        <div class="skills-menu_pillar">
+            <h1 class="skills-menu__header"><a href="#{{pillar.items[0].fields.pillar}}">{{pillar.items[0].fields.pillar}} Skills</a></h1>
+            {% assign sorted_tracks = pillar.items | sort: "fields.track-number" %}
+            {% assign tracks = sorted_tracks | group_by: "fields.track-name" %}
+            <ul class="skills-menu__links">
+                {% for track in tracks %}
+                <li class="skills-menu__link"><a href="#{{track.items[0].fields.track}}">{{track.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+</div>
+<div class="skills-list">
+    {% for pillar in sorted_pillars %}
+    <div class="pillar" id="{{pillar.items[0].fields.pillar}}">
+        <h1 class="pillar-name pillar-name-{{pillar.items[0].fields.pillar}}">{{pillar.items[0].fields.pillar}} Skills</h1>
+        
+        {% assign sorted_tracks = pillar.items | sort: "fields.track-number" %}
+        {% assign skill_tracks = sorted_tracks | group_by: "fields.track-name" %}
+        
+        {% for skill_track in skill_tracks %}
+
+        <div class="skill skill-{{pillar.items[0].fields.pillar}}" id="{{skill_track.items[0].fields.track}}">
+            <div class="name-holder skill-{{pillar.items[0].fields.pillar}}">
+                <div class="name-holder__content">
+                    <h2>{{ skill_track.name }}</h2>
+                    <p>{{ skill_track.items[0].fields.track-description }}</p>
+                </div>
+                <!-- <p class="name-holder__top-link"><a href="#top">To top</a></p> -->
+            </div>
+            {% assign track_items = skill_track.items | sort: "fields.level-number" %}
+            {% for track_level in track_items %}
+                {% for track_n in tracks_n %}
+                    {% if track_n.fields.name == track_level.fields.track-name %}
+                        {% if track_level.fields.level-number == 1 %}
+                            <h3>{{ track_n.fields.behaviour-1-title }}</h3>
+                        {% endif %}
+                        <h5>Level {{ track_level.fields.level-number }}</h5>
+                        <p>{{ track_level.fields.behaviour-1 }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endfor%}
+            {% for track_level in track_items %}
+                {% for track_n in tracks_n %}
+                    {% if track_n.fields.name == track_level.fields.track-name %}
+                        {% if track_level.fields.level-number == 1 %}
+                            <h3>{{ track_n.fields.behaviour-2-title }}</h3>
+                        {% endif %}
+                        <h5>Level {{ track_level.fields.level-number }}</h5>
+                        <p>{{ track_level.fields.behaviour-2 }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endfor%}
+            {% for track_level in track_items %}
+                {% for track_n in tracks_n %}
+                    {% if track_level.fields.behaviour-4 %}
+                        {% if track_n.fields.name == track_level.fields.track-name %}
+                            {% if track_level.fields.level-number == 1 %}
+                                <h3>{{ track_n.fields.behaviour-3-title }}</h3>
+                            {% endif %}
+                            <h5>Level {{ track_level.fields.level-number }}</h5>
+                            <p>{{ track_level.fields.behaviour-3 }}</p>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor%}
+            {% for track_level in track_items %}
+                {% for track_n in tracks_n %}
+                    {% if track_level.fields.behaviour-4 %}
+                        {% if track_n.fields.name == track_level.fields.track-name %}
+                            {% if track_level.fields.level-number == 1 %}
+                                <h3>{{ track_n.fields.behaviour-4-title }}</h3>
+                            {% endif %}
+                            <h5>Level {{ track_level.fields.level-number }}</h5>
+                            <p>{{ track_level.fields.behaviour-4 }}</p>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor%}
+        </div>
+        {% endfor %}
+        {% for sorted_track in sorted_tracks %}
+        <p>{{sorted_track.name }}</p>
+        {% endfor %}
+        <!-- {% assign tracks = sorted_tracks | group_by: "fields.track-name" %} -->
+        <!-- {% for sorted_track in tracks %}
+        <p>{{sorted_track.fields.name}}</p>
+        {% endfor %} -->
+
+    </div>
+    {% endfor %}
+</div>
