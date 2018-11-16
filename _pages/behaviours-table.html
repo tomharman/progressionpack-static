@@ -1,0 +1,97 @@
+---
+layout: base
+permalink: "/behaviours-table/"
+title: Behaviours Table
+---
+
+{% assign tracks_n = site.data.tracks.records %}
+{% assign skills = site.data.skills.records %}
+{% assign skills_type = skills | group_by: "fields.pillar-number" %}
+{% assign sorted_pillars = skills_type | sort:"name" %}
+
+<div class="section-table">
+    <table class="tg">
+        <tr>
+          <th class="tg-0lax table-header">behaviour</th>
+          <th class="tg-0lax table-header">skill</th>
+          <th class="tg-0lax table-header">subskill</th>
+          <th class="tg-0lax table-header">pillar</th>
+          <th class="tg-0lax table-header">level</th>
+          <th class="tg-0lax table-header">points</th>
+        </tr>
+    {% for pillar in sorted_pillars %}
+        {% assign sorted_tracks = pillar.items | sort: "fields.track-number" %}
+        {% assign skill_tracks = sorted_tracks | group_by: "fields.track-name" %}
+        
+        {% for skill_track in skill_tracks %}
+
+            {% assign track_items = skill_track.items | sort: "fields.level-number" %}
+
+            {% for track_level in track_items %}
+                {% for track_n in tracks_n %}
+                    {% if track_n.fields.name == track_level.fields.track-name %}
+                        <tr>
+                            <td class="tg-0lax">{{ track_level.fields.behaviour-1 }}</td>
+                            <td class="tg-0lax">{{ track_n.fields.behaviour-1-title }}</td>
+                            <td class="tg-0lax">{{ skill_track.name }}</td>
+                            <td class="tg-0lax">{{ track_n.fields.pillar | downcase }}</td>
+                            <td class="tg-0lax">{{ track_level.fields.level-number }}</td>
+                            <td class="tg-0lax">{{ track_level.fields.points }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endfor%}
+
+            {% for track_level in track_items %}
+                {% for track_n in tracks_n %}
+                    {% if track_n.fields.name == track_level.fields.track-name %}
+                        <tr>
+                            <td class="tg-0lax">{{ track_level.fields.behaviour-2 }}</td>
+                            <td class="tg-0lax">{{ track_n.fields.behaviour-2-title }}</td>
+                            <td class="tg-0lax">{{ skill_track.name }}</td>
+                            <td class="tg-0lax">{{ track_n.fields.pillar | downcase }}</td>
+                            <td class="tg-0lax">{{ track_level.fields.level-number }}</td>
+                            <td class="tg-0lax">{{ track_level.fields.points }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endfor%}
+
+            {% for track_level in track_items %}
+                {% for track_n in tracks_n %}
+                    {% if track_level.fields.behaviour-3 %}
+                        {% if track_n.fields.name == track_level.fields.track-name %}
+                            <tr>
+                                <td class="tg-0lax">{{ track_level.fields.behaviour-3 }}</td>
+                                <td class="tg-0lax">{{ track_n.fields.behaviour-3-title }}</td>
+                                <td class="tg-0lax">{{ skill_track.name }}</td>
+                                <td class="tg-0lax">{{ track_n.fields.pillar | downcase }}</td>
+                                <td class="tg-0lax">{{ track_level.fields.level-number }}</td>
+                                <td class="tg-0lax">{{ track_level.fields.points }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+
+            {% for track_level in track_items %}
+                {% for track_n in tracks_n %}
+                    {% if track_level.fields.behaviour-4 %}
+                        {% if track_n.fields.name == track_level.fields.track-name %}
+                            <tr>
+                                <td class="tg-0lax">{{ track_level.fields.behaviour-4 }}</td>
+                                <td class="tg-0lax">{{ track_n.fields.behaviour-4-title }}</td>
+                                <td class="tg-0lax">{{ skill_track.name }}</td>
+                                <td class="tg-0lax">{{ track_n.fields.pillar | downcase }}</td>
+                                <td class="tg-0lax">{{ track_level.fields.level-number }}</td>
+                                <td class="tg-0lax">{{ track_level.fields.points }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+
+        {% endfor %}
+    {% endfor %}
+    </table>
+</div>

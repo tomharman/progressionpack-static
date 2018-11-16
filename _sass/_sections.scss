@@ -73,3 +73,7 @@
     background-color: $color-leader;
     * {color: white;}
 }
+
+.section-table {
+    @include padded-section;
+}
